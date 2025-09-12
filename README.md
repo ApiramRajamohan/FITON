@@ -41,24 +41,16 @@
 ---
 
 ## Technologies
-- **Frontend:** React.js, Next.js, Tailwind CSS  
-- **Backend:** Java Spring Boot  
-- **Database:** MySQL / PostgreSQL  
+- **Frontend:** React.js
+- **Backend:** ASP.NET (MVC or Web API) + ADO.NET (direct SQL)
+- **Database:** MySQL 
 - **Authentication:** JWT  
-- **3D Rendering:** Three.js / glTF models  
-- **Testing:** Jest, Postman, Cypress  
-- **Deployment:** AWS / Docker  
+- **Testing:** Selenium, JMeter, Unit Test
+- **Deployment:** AWS 
 
 ---
 
 ## Getting Started
-
-### Prerequisites
-- Node.js >= 18.x  
-- Java 17+  
-- Maven / Gradle  
-- MySQL / PostgreSQL  
-- Git  
 
 ### Installation
 
