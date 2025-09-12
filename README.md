@@ -1,7 +1,5 @@
 # Fiton – Virtual Wardrobe
 
-![Fiton Logo](docs/logo.png) <!-- Optional: add your logo -->
-
 ## Project Overview
 **Fiton** is a personalized virtual fitting room application that allows users to create avatars based on body measurements and virtually try on clothing from partner fashion brands. The system aims to reduce return rates, increase user confidence in online shopping, and provide brands with actionable insights into customer preferences.
 
