@@ -6,3 +6,4 @@
 *.vsix
 bin/
 obj/
+*FITON.Server/Migrations

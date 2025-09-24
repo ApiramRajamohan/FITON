@@ -29,6 +29,7 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
+        Console.WriteLine("Hello");
         if (await _db.Users.AnyAsync(u => u.Username == dto.Username || u.Email == dto.Email))
             return BadRequest("Username or Email already exists");
 
