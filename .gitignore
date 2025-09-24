@@ -7,3 +7,4 @@
 bin/
 obj/
 *FITON.Server/Migrations
+FITON.sln
