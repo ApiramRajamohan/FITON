@@ -6,9 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f1bed6c4-c9c3-47ab-aaae-cb7a1325cbed</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <SpaRoot>..\fiton.client</SpaRoot>
+    <!-- SPA proxy disabled for debugging -->
+    <!-- <SpaRoot>..\fiton.client</SpaRoot>
     <SpaProxyLaunchCommand>npm run dev</SpaProxyLaunchCommand>
-    <SpaProxyServerUrl>https://localhost:4403</SpaProxyServerUrl>
+    <SpaProxyServerUrl>https://localhost:4403</SpaProxyServerUrl> -->
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,9 +17,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.9" />
-    <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
+    <!-- SPA proxy package disabled -->
+    <!-- <PackageReference Include="Microsoft.AspNetCore.SpaProxy">
       <Version>9.*-*</Version>
-    </PackageReference>
+    </PackageReference> -->
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.9">
@@ -28,10 +30,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- Project reference to frontend disabled -->
+  <!-- <ItemGroup>
     <ProjectReference Include="..\fiton.client\fiton.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
-  </ItemGroup>
+  </ItemGroup> -->
 
 </Project>

@@ -25,7 +25,8 @@ namespace FITON.Tests
         private IConfiguration GetConfiguration()
         {
             var inMemorySettings = new Dictionary<string, string?> {
-                {"Jwt:Key", "SuperSecretKey1234567890"},
+                // Key length must be >= 32 bytes for HS256
+                {"Jwt:Key", "SuperSecretKey1234567890_WithExtraLength_!@#"},
                 {"Jwt:Issuer", "TestIssuer"},
                 {"Jwt:Audience", "TestAudience"}
             };

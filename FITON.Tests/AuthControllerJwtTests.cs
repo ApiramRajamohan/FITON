@@ -26,7 +26,7 @@ namespace FITON.Tests
         private IConfiguration GetConfiguration()
         {
             var settings = new Dictionary<string, string?> {
-                {"Jwt:Key", "SuperSecretKey1234567890"},
+                {"Jwt:Key", "SuperSecretKey1234567890_WithExtraLength_!@#"},
                 {"Jwt:Issuer", "TestIssuer"},
                 {"Jwt:Audience", "TestAudience"}
             };

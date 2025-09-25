@@ -135,10 +135,21 @@ public class AuthController : ControllerBase
     [HttpGet("me")]
     public async Task<IActionResult> Me()
     {
-        var userId = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-        var user = await _db.Users.FindAsync(int.Parse(userId));
-        if (user == null) return Unauthorized();
-        return Ok(new { user.Id, user.Username, user.Email });
+        var userIdClaim = User.FindFirstValue(JwtRegisteredClaimNames.Sub) ??
+                          User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (string.IsNullOrWhiteSpace(userIdClaim) || !int.TryParse(userIdClaim, out var id))
+        {
+            return Unauthorized(new { error = "Missing or invalid user id claim" });
+        }
+
+        var user = await _db.Users.FindAsync(id);
+        if (user == null)
+        {
+            return Unauthorized(new { error = "User not found" });
+        }
+
+        return Ok(new { user.Id, user.Username, user.Email, user.IsAdmin });
     }
 
     // ================== Helpers ==================
@@ -178,7 +189,15 @@ public class AuthController : ControllerBase
             new Claim(JwtRegisteredClaimNames.UniqueName, user.Username)
         };
 
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+        // Normalize key (mirror logic in Program.cs ensuring >=32 bytes)
+        var raw = _config["Jwt:Key"] ?? "DevelopmentFallbackJwtKey";
+        byte[] keyBytes = Encoding.UTF8.GetBytes(raw);
+        if (keyBytes.Length < 32)
+        {
+            using var sha = SHA256.Create();
+            keyBytes = sha.ComputeHash(keyBytes); // 32 bytes
+        }
+        var key = new SymmetricSecurityKey(keyBytes);
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
         var token = new JwtSecurityToken(
