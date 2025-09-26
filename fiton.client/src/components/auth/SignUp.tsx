@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
-import { useAuth } from '../../contexts/authContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 
 interface SignUpProps {
@@ -19,18 +19,18 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
 
   const { register } = useAuth();
 
-  const handleSubmit = async(e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       alert('Passwords do not match');
       return;
     }
     try {
-        await register(formData.username, formData.email, formData.password);
-          alert('Account created successfully!');
-     } catch (err: any) {
-        alert(err.message);
-     }
+      await register(formData.username, formData.email, formData.password);
+      alert('Account created successfully!');
+    } catch (err: any) {
+      alert(err.message);
+    }
     console.log('Sign up:', formData);
   };
 
@@ -42,18 +42,18 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
   };
 
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center p-4">
-      <Card className="w-full max-w-md bg-gray-900 border-gray-700">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-md bg-card border-border">
         <CardHeader className="text-center">
-          <CardTitle className="text-white">Join FitOn</CardTitle>
-          <CardDescription className="text-gray-300">
+          <CardTitle className="text-card-foreground">Join FitOn</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Create your virtual wardrobe account
           </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="username" className="text-white">Username</Label>
+              <Label htmlFor="username" className="text-foreground">Username</Label>
               <Input
                 id="username"
                 name="username"
@@ -62,12 +62,12 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
                 value={formData.username}
                 onChange={handleInputChange}
                 required
-                className="bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                className="bg-input-background"
               />
             </div>
-            
+
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-white">Email</Label>
+              <Label htmlFor="email" className="text-foreground">Email</Label>
               <Input
                 id="email"
                 name="email"
@@ -76,12 +76,12 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                className="bg-input-background"
               />
             </div>
-            
+
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-white">Password</Label>
+              <Label htmlFor="password" className="text-foreground">Password</Label>
               <Input
                 id="password"
                 name="password"
@@ -90,12 +90,12 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                className="bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                className="bg-input-background"
               />
             </div>
-            
+
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword" className="text-white">Confirm Password</Label>
+              <Label htmlFor="confirmPassword" className="text-foreground">Confirm Password</Label>
               <Input
                 id="confirmPassword"
                 name="confirmPassword"
@@ -104,24 +104,24 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
                 required
-                className="bg-gray-800 border-gray-600 text-white placeholder-gray-400"
+                className="bg-input-background"
               />
             </div>
-            
-            <Button 
-              type="submit" 
-              className="w-full bg-white text-black hover:bg-gray-200"
+
+            <Button
+              type="submit"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
             >
               Create Account
             </Button>
           </form>
-          
+
           <div className="mt-6 text-center">
-            <p className="text-gray-300">
+            <p className="text-muted-foreground">
               Already have an account?{' '}
-              <button 
+              <button
                 onClick={onSwitchToSignIn}
-                className="text-white hover:underline"
+                className="text-foreground hover:underline"
               >
                 Sign in
               </button>

@@ -1,11 +1,20 @@
 "use client";
 
 import * as React from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react@0.487.0";
-import { DayPicker } from "react-day-picker@8.10.1";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { DayPicker, DayPickerProps } from "react-day-picker";
 
 import { cn } from "./utils";
 import { buttonVariants } from "./button";
+
+// ✅ Explicitly typed icons
+const IconLeft: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <ChevronLeft className={cn("size-4", props.className)} {...props} />
+);
+
+const IconRight: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
+  <ChevronRight className={cn("size-4", props.className)} {...props} />
+);
 
 function Calendar({
   className,
@@ -59,14 +68,8 @@ function Calendar({
         day_hidden: "invisible",
         ...classNames,
       }}
-      components={{
-        IconLeft: ({ className, ...props }) => (
-          <ChevronLeft className={cn("size-4", className)} {...props} />
-        ),
-        IconRight: ({ className, ...props }) => (
-          <ChevronRight className={cn("size-4", className)} {...props} />
-        ),
-      }}
+      // ✅ Cast to DayPickerProps["components"] to remove TS redline
+      components={{ IconLeft, IconRight } as DayPickerProps["components"]}
       {...props}
     />
   );
