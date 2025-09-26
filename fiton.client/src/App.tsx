@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { AuthProvider } from './contexts/AuthContext';
 import { SignUp } from './components/auth/SignUp';
 import { SignIn } from './components/auth/SignIn';
 import { ForgotPassword } from './components/auth/ForgotPassword';
@@ -7,198 +8,156 @@ import { Profile } from './components/profile/Profile';
 import { Settings } from './components/settings/Settings';
 import { BodyMeasurements } from './components/measurements/BodyMeasurements';
 import { AdminDashboard } from './components/admin/AdminDashboard';
+import React from 'react';
 
-type AppState = 'signin' | 'signup' | 'dashboard' | 'forgot-password' | 'profile' | 'settings' | 'measurements' | 'admin-dashboard';
+type AppState =
+    | 'signin'
+    | 'signup'
+    | 'dashboard'
+    | 'forgot-password'
+    | 'profile'
+    | 'settings'
+    | 'measurements'
+    | 'admin-dashboard';
 
 interface Measurements {
-  chest: string;
-  waist: string;
-  hips: string;
-  shoulders: string;
-  inseam: string;
-  height: string;
-  weight: string;
-  neckCircumference: string;
-  sleeveLength: string;
-  thigh: string;
+    chest: string;
+    waist: string;
+    hips: string;
+    shoulders: string;
+    inseam: string;
+    height: string;
+    weight: string;
+    neckCircumference: string;
+    sleeveLength: string;
+    thigh: string;
 }
 
 interface UserProfile {
-  username: string;
-  email: string;
-  fullName: string;
-  bio: string;
-  joinDate: string;
-  measurements?: Measurements;
+    username: string;
+    email: string;
+    fullName: string;
+    bio: string;
+    joinDate: string;
+    measurements?: Measurements;
 }
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<AppState>('signin');
-  const [currentUser, setCurrentUser] = useState<string>('');
-  const [userProfiles, setUserProfiles] = useState<Record<string, UserProfile>>({});
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(true); // Default to dark mode
+    const [currentView, setCurrentView] = useState<AppState>('signin');
+    const [currentUser, setCurrentUser] = useState<string>('');
+    const [userProfiles, setUserProfiles] = useState<Record<string, UserProfile>>({});
+    const [isDarkMode, setIsDarkMode] = useState<boolean>(true);
 
-  // Apply dark mode to document
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [isDarkMode]);
-
-  const handleSwitchToSignUp = () => {
-    setCurrentView('signup');
-  };
-
-  const handleSwitchToSignIn = () => {
-    setCurrentView('signin');
-  };
-
-  const handleSignInSuccess = (username: string, password: string) => {
-    // Check if admin credentials
-    if (username === 'admin' && password === 'admin123') {
-      setCurrentUser(username);
-      setCurrentView('admin-dashboard');
-      return;
-    }
-    
-    // Regular user login
-    setCurrentUser(username);
-    // Initialize empty user profile if it doesn't exist
-    if (!userProfiles[username]) {
-      setUserProfiles(prev => ({
-        ...prev,
-        [username]: {
-          username,
-          email: '',
-          fullName: '',
-          bio: '',
-          joinDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+    // Apply dark mode
+    useEffect(() => {
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
         }
-      }));
-    }
-    setCurrentView('dashboard');
-  };
+    }, [isDarkMode]);
 
-  const handleSignOut = () => {
-    setCurrentUser('');
-    setCurrentView('signin');
-  };
+    const handleSignInSuccess = (username: string, isAdmin = false) => {
+        setCurrentUser(username);
+        if (isAdmin) {
+            setCurrentView('admin-dashboard');
+            return;
+        }
 
-  const handleForgotPassword = () => {
-    setCurrentView('forgot-password');
-  };
+        if (!userProfiles[username]) {
+            setUserProfiles((prev) => ({
+                ...prev,
+                [username]: {
+                    username,
+                    email: '',
+                    fullName: '',
+                    bio: '',
+                    joinDate: new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+                },
+            }));
+        }
 
-  const handleNavigateToProfile = () => {
-    setCurrentView('profile');
-  };
+        setCurrentView('dashboard');
+    };
 
-  const handleNavigateToSettings = () => {
-    setCurrentView('settings');
-  };
+    const handleSignOut = () => {
+        setCurrentUser('');
+        setCurrentView('signin');
+    };
 
-  const handleNavigateToDashboard = () => {
-    setCurrentView('dashboard');
-  };
+    const handleSaveMeasurements = (measurements: Measurements) => {
+        setUserProfiles((prev) => ({
+            ...prev,
+            [currentUser]: {
+                ...prev[currentUser],
+                measurements,
+            },
+        }));
+    };
 
-  const handleNavigateToMeasurements = () => {
-    setCurrentView('measurements');
-  };
+    const handleUpdateProfile = (updatedProfile: UserProfile) => {
+        setUserProfiles((prev) => ({
+            ...prev,
+            [currentUser]: updatedProfile,
+        }));
+    };
 
-  const handleSaveMeasurements = (measurements: Measurements) => {
-    setUserProfiles(prev => ({
-      ...prev,
-      [currentUser]: {
-        ...prev[currentUser],
-        measurements
-      }
-    }));
-    console.log(`Measurements saved for ${currentUser}:`, measurements);
-  };
+    const handleToggleDarkMode = () => {
+        setIsDarkMode((prev) => !prev);
+    };
 
-  const handleUpdateProfile = (updatedProfile: UserProfile) => {
-    setUserProfiles(prev => ({
-      ...prev,
-      [currentUser]: updatedProfile
-    }));
-    console.log(`Profile updated for ${currentUser}:`, updatedProfile);
-  };
-
-  const handleToggleDarkMode = () => {
-    setIsDarkMode(prev => !prev);
-  };
-
-  switch (currentView) {
-    case 'signup':
-      return <SignUp onSwitchToSignIn={handleSwitchToSignIn} />;
-    case 'signin':
-      return (
-        <SignIn 
-          onSwitchToSignUp={handleSwitchToSignUp} 
-          onSignInSuccess={handleSignInSuccess}
-          onForgotPassword={handleForgotPassword}
-        />
-      );
-    case 'admin-dashboard':
-      return (
-        <AdminDashboard 
-          adminId={currentUser}
-          userProfiles={userProfiles}
-          onSignOut={handleSignOut}
-        />
-      );
-    case 'forgot-password':
-      return <ForgotPassword onBackToSignIn={handleSwitchToSignIn} />;
-    case 'dashboard':
-      return (
-        <Dashboard 
-          username={currentUser}
-          onSignOut={handleSignOut}
-          onNavigateToProfile={handleNavigateToProfile}
-          onNavigateToSettings={handleNavigateToSettings}
-          onNavigateToMeasurements={handleNavigateToMeasurements}
-        />
-      );
-    case 'profile':
-      return (
-        <Profile 
-          username={currentUser}
-          userProfile={userProfiles[currentUser]}
-          onUpdateProfile={handleUpdateProfile}
-          onBackToDashboard={handleNavigateToDashboard}
-          onSignOut={handleSignOut}
-          onNavigateToMeasurements={handleNavigateToMeasurements}
-        />
-      );
-    case 'settings':
-      return (
-        <Settings 
-          username={currentUser}
-          userProfile={userProfiles[currentUser]}
-          isDarkMode={isDarkMode}
-          onToggleDarkMode={handleToggleDarkMode}
-          onBackToDashboard={handleNavigateToDashboard}
-          onSignOut={handleSignOut}
-        />
-      );
-    case 'measurements':
-      return (
-        <BodyMeasurements 
-          username={currentUser}
-          existingMeasurements={userProfiles[currentUser]?.measurements}
-          onSaveMeasurements={handleSaveMeasurements}
-          onBackToDashboard={handleNavigateToDashboard}
-          onSignOut={handleSignOut}
-        />
-      );
-    default:
-      return (
-        <SignIn 
-          onSwitchToSignUp={handleSwitchToSignUp} 
-          onSignInSuccess={handleSignInSuccess}
-          onForgotPassword={handleForgotPassword}
-        />
-      );
-  }
+    return (
+        <AuthProvider>
+            {currentView === 'signup' && <SignUp onSwitchToSignIn={() => setCurrentView('signin')} />}
+            {currentView === 'signin' && (
+                <SignIn
+                    onSwitchToSignUp={() => setCurrentView('signup')}
+                    onSignInSuccess={(username) => handleSignInSuccess(username)}
+                    onForgotPassword={() => setCurrentView('forgot-password')}
+                />
+            )}
+            {currentView === 'forgot-password' && <ForgotPassword onBackToSignIn={() => setCurrentView('signin')} />}
+            {currentView === 'dashboard' && (
+                <Dashboard
+                    username={currentUser}
+                    onSignOut={handleSignOut}
+                    onNavigateToProfile={() => setCurrentView('profile')}
+                    onNavigateToSettings={() => setCurrentView('settings')}
+                    onNavigateToMeasurements={() => setCurrentView('measurements')}
+                />
+            )}
+            {currentView === 'profile' && (
+                <Profile
+                    username={currentUser}
+                    userProfile={userProfiles[currentUser]}
+                    onUpdateProfile={handleUpdateProfile}
+                    onBackToDashboard={() => setCurrentView('dashboard')}
+                    onSignOut={handleSignOut}
+                    onNavigateToMeasurements={() => setCurrentView('measurements')}
+                />
+            )}
+            {currentView === 'settings' && (
+                <Settings
+                    username={currentUser}
+                    userProfile={userProfiles[currentUser]}
+                    isDarkMode={isDarkMode}
+                    onToggleDarkMode={handleToggleDarkMode}
+                    onBackToDashboard={() => setCurrentView('dashboard')}
+                    onSignOut={handleSignOut}
+                />
+            )}
+            {currentView === 'measurements' && (
+                <BodyMeasurements
+                    username={currentUser}
+                    existingMeasurements={userProfiles[currentUser]?.measurements}
+                    onSaveMeasurements={handleSaveMeasurements}
+                    onBackToDashboard={() => setCurrentView('dashboard')}
+                    onSignOut={handleSignOut}
+                />
+            )}
+            {currentView === 'admin-dashboard' && (
+                <AdminDashboard adminId={currentUser} userProfiles={userProfiles} onSignOut={handleSignOut} />
+            )}
+        </AuthProvider>
+    );
 }
