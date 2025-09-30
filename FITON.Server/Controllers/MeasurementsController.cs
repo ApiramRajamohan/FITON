@@ -4,124 +4,95 @@ using FITON.Server.Utils.Database;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Metrics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
 namespace FITON.Server.Controllers
 {
-    [Authorize] // Ensures only logged-in users can access this
+    [Authorize]
     [Route("api/avatar/[controller]")]
     [ApiController]
     public class MeasurementsController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public MeasurementsController(AppDbContext context)
+        public MeasurementsController(AppDbContext context) => _context = context;
+
+        private int GetUserIdFromToken()
         {
-            _context = context;
+            var userIdStr = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            if (!int.TryParse(userIdStr, out var userId))
+                throw new UnauthorizedAccessException("User ID not found in token");
+            return userId;
         }
 
-        // GET: api/avatar/measurements
-        // Gets the measurements for the currently logged-in user
-        [HttpGet]
+        [HttpGet("retrive")]
         public async Task<IActionResult> GetMeasurements()
         {
-            var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
-            {
-                var claims = User?.Claims?.Select(c => new { c.Type, c.Value })?.ToList();
-                return Unauthorized(new { error = "User ID not found in token", claims });
-            }
-
-            var measurement = await _context.Measurements
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.UserId == userId);
-
-            if (measurement == null)
-            {
-                return NotFound("No measurements found for this user.");
-            }
-
+            var userId = GetUserIdFromToken();
+            var measurement = await _context.Measurements.AsNoTracking().FirstOrDefaultAsync(m => m.UserId == userId);
+            if (measurement == null) return NotFound("No measurements found for this user.");
             return Ok(measurement);
         }
 
-
-        // POST: api/avatar/measurements
-        // Creates or updates measurements for the currently logged-in user
-        [HttpPost]
-        public async Task<IActionResult> SaveMeasurements([FromBody] MeasurementDto measurementDto)
+        [HttpPost("save")]
+        public async Task<IActionResult> SaveMeasurements([FromBody] MeasurementDto dto)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            var userId = GetUserIdFromToken();
+            var existing = await _context.Measurements.FirstOrDefaultAsync(m => m.UserId == userId);
+
+            if (existing != null)
             {
-                return BadRequest(ModelState);
+                // Update all optional fields dynamically
+                existing.Height = dto.Height;
+                existing.Weight = dto.Weight;
+                existing.Chest = dto.Chest;
+                existing.Waist = dto.Waist;
+                existing.Hips = dto.Hips;
+                existing.Shoulders = dto.Shoulders;
+                existing.NeckCircumference = dto.NeckCircumference;
+                existing.SleeveLength = dto.SleeveLength;
+                existing.Inseam = dto.Inseam;
+                existing.Thigh = dto.Thigh;
+                existing.SkinColor = dto.SkinColor;
+                existing.Description = dto.Description;
+
+                _context.Measurements.Update(existing);
+                await _context.SaveChangesAsync();
+                return Ok(existing);
             }
 
-            var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
+            var newMeasurement = new Measurement
             {
-                var claims = User?.Claims?.Select(c => new { c.Type, c.Value })?.ToList();
-                return Unauthorized(new { error = "User ID not found in token", claims });
-            }
+                UserId = userId,
+                Height = dto.Height,
+                Weight = dto.Weight,
+                Chest = dto.Chest,
+                Waist = dto.Waist,
+                Hips = dto.Hips,
+                Shoulders = dto.Shoulders,
+                NeckCircumference = dto.NeckCircumference,
+                SleeveLength = dto.SleeveLength,
+                Inseam = dto.Inseam,
+                Thigh = dto.Thigh,
+                SkinColor = dto.SkinColor,
+                Description = dto.Description
+            };
 
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null)
-            {
-                return NotFound("User not found.");
-            }
-
-            var existingMeasurement = await _context.Measurements
-                .FirstOrDefaultAsync(m => m.UserId == userId);
-
-            if (existingMeasurement != null)
-            {
-                // Update existing measurements
-                existingMeasurement.Height = measurementDto.Height;
-                existingMeasurement.Weight = measurementDto.Weight;
-                existingMeasurement.Chest = measurementDto.Chest;
-                existingMeasurement.Waist = measurementDto.Waist;
-                existingMeasurement.Hips = measurementDto.Hips;
-                existingMeasurement.Inseam = measurementDto.Inseam;
-                _context.Measurements.Update(existingMeasurement);
-            }
-            else
-            {
-                // Create new measurements
-                var newMeasurement = new Measurement
-                {
-                    UserId = userId,
-                    Height = measurementDto.Height,
-                    Weight = measurementDto.Weight,
-                    Chest = measurementDto.Chest,
-                    Waist = measurementDto.Waist,
-                    Hips = measurementDto.Hips,
-                    Inseam = measurementDto.Inseam,
-                };
-                await _context.Measurements.AddAsync(newMeasurement);
-            }
-
+            await _context.Measurements.AddAsync(newMeasurement);
             await _context.SaveChangesAsync();
 
-            return Ok(new { message = "Measurements saved successfully." });
+            return Ok(newMeasurement);
         }
 
-        // DELETE: api/avatar/measurements
-        // Deletes the current user's measurements
-        [HttpDelete]
+        [HttpDelete("remove")]
         public async Task<IActionResult> DeleteMeasurements()
         {
-            var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-            if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
-            {
-                var claims = User?.Claims?.Select(c => new { c.Type, c.Value })?.ToList();
-                return Unauthorized(new { error = "User ID not found in token", claims });
-            }
-
+            var userId = GetUserIdFromToken();
             var measurement = await _context.Measurements.FirstOrDefaultAsync(m => m.UserId == userId);
-            if (measurement == null)
-            {
-                return NotFound("No measurements to delete.");
-            }
+            if (measurement == null) return NotFound("No measurements to delete.");
 
             _context.Measurements.Remove(measurement);
             await _context.SaveChangesAsync();
