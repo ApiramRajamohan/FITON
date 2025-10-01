@@ -1,6 +1,7 @@
 ﻿using FITON.Server.DTOs;
 using FITON.Server.Models;
 using FITON.Server.Utils.Database;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ public class AuthController : ControllerBase
         _env = env;
     }
 
+    [AllowAnonymous]
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDto dto)
     {
@@ -42,11 +44,9 @@ public class AuthController : ControllerBase
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
 
-        var jwt = await SetTokens(user);
-        var data = new AuthorizationResponse(user.Id, user.Username, user.Email);
-        return Ok(new { user = data, token = jwt });
+        return Ok();
     }
-
+    [AllowAnonymous]
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginDto dto)
     {
@@ -55,10 +55,9 @@ public class AuthController : ControllerBase
             return Unauthorized(new { Error = "Invalid credentials" });
 
         var jwt = await SetTokens(user);
-        var data = new AuthorizationResponse(user.Id,user.Username,user.Email);
-        return Ok(new { user = data, token = jwt });
+        return Ok(new { username = user.Username, token = jwt });
     }
-
+    [AllowAnonymous]
     [HttpPost("refresh")]
     public async Task<IActionResult> Refresh()
     {
@@ -142,9 +141,13 @@ public class AuthController : ControllerBase
     {
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.UniqueName, user.Username)
-        };
+        new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
+        new Claim(JwtRegisteredClaimNames.Email, user.Email),
+        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) // Keep this as backup
+    };
+
         var secret = _config.GetValue<string>("Secret");
         var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

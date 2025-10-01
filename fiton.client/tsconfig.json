@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "esnext", // ✅ needed for React imports & Vite
+    "moduleResolution": "node", // ✅ resolve node_modules correctly
+    "jsx": "react-jsx", // ✅ React 17+ JSX transform
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [ "src" ] // ✅ make sure TS only scans src
+}

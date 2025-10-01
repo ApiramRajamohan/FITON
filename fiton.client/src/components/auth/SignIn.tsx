@@ -8,7 +8,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 interface SignInProps {
   onSwitchToSignUp: () => void;
-  onSignInSuccess: (username: string) => void; // ✅ fixed: only username
+  onSignInSuccess: (email:string, username: string) => void; // ✅ fixed: only username
   onForgotPassword: () => void;
 }
 
@@ -22,10 +22,9 @@ export function SignIn({ onSwitchToSignUp, onSignInSuccess, onForgotPassword }: 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Sign in:', formData);
-
     try {
-      await login(formData.email, formData.password);
-      onSignInSuccess(formData.email); // ✅ fixed: only pass email
+      var username : any = await login(formData.email, formData.password);
+      onSignInSuccess(username,formData.email); // ✅ fixed: only pass email
       alert('Logged in successfully!');
     } catch (err: any) {
       alert(err.message);

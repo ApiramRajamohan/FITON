@@ -20,24 +20,63 @@ namespace FITON.Server.Controllers
 
         private int GetUserIdFromToken()
         {
-            var userIdStr = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
-            if (!int.TryParse(userIdStr, out var userId))
-                throw new UnauthorizedAccessException("User ID not found in token");
+            // Try multiple possible claim locations
+            var userIdStr = User.FindFirstValue(JwtRegisteredClaimNames.Sub) ??
+                           User.FindFirstValue(ClaimTypes.NameIdentifier) ??
+                           User.FindFirstValue("userid") ??
+                           User.FindFirstValue("id");
+
+            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out var userId))
+            {
+                // Log detailed information for debugging
+                var claims = User.Claims.Select(c => $"{c.Type}: {c.Value}").ToList();
+                Console.WriteLine($"Available claims: {string.Join(", ", claims)}");
+                throw new UnauthorizedAccessException($"User ID not found in token. Available claims: {string.Join(", ", claims)}");
+            }
+
             return userId;
         }
 
-        [HttpGet("retrive")]
+        [HttpGet("retrieve")]
         public async Task<IActionResult> GetMeasurements()
         {
-            var userId = GetUserIdFromToken();
-            var measurement = await _context.Measurements.AsNoTracking().FirstOrDefaultAsync(m => m.UserId == userId);
-            if (measurement == null) return NotFound("No measurements found for this user.");
-            return Ok(measurement);
+            try
+            {
+                Console.WriteLine("=== FETCH MEASUREMENTS START ===");
+
+                var userId = GetUserIdFromToken();
+                Console.WriteLine($"User ID from token: {userId}");
+
+                var measurement = await _context.Measurements
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(m => m.UserId == userId);
+
+                Console.WriteLine($"Measurement found: {measurement != null}");
+
+                if (measurement == null)
+                {
+                    Console.WriteLine("No measurements found for user");
+                    return NotFound("No measurements found for this user.");
+                }
+
+                Console.WriteLine($"Returning measurement: {System.Text.Json.JsonSerializer.Serialize(measurement)}");
+                Console.WriteLine("=== FETCH MEASUREMENTS END ===");
+
+                return Ok(measurement);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR in GetMeasurements: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                return StatusCode(500, new { error = "Internal server error", details = ex.Message });
+            }
         }
+
 
         [HttpPost("save")]
         public async Task<IActionResult> SaveMeasurements([FromBody] MeasurementDto dto)
         {
+            Console.WriteLine("Received DTO: " + System.Text.Json.JsonSerializer.Serialize(dto));
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var userId = GetUserIdFromToken();

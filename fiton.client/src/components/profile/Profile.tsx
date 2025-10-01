@@ -41,9 +41,6 @@ export function Profile({ username, userProfile, onUpdateProfile, onBackToDashbo
   const [profileData, setProfileData] = useState(userProfile || {
     username: username,
     email: `${username}@example.com`,
-    fullName: username.charAt(0).toUpperCase() + username.slice(1),
-    bio: 'Fashion enthusiast and style lover',
-    joinDate: 'January 2024'
   });
 
   const [isEditing, setIsEditing] = useState(false);

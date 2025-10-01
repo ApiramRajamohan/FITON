@@ -27,7 +27,8 @@ export function SignUp({ onSwitchToSignIn }: SignUpProps) {
     }
     try {
       await register(formData.username, formData.email, formData.password);
-      alert('Account created successfully!');
+        alert('Account created successfully!');
+        onSwitchToSignIn();
     } catch (err: any) {
       alert(err.message);
     }
