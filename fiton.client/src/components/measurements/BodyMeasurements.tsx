@@ -62,6 +62,7 @@ export function BodyMeasurements({
   const [generationError, setGenerationError] = useState<string | null>(null);
   const [avatarImageUrl, setAvatarImageUrl] = useState<string | null>(null);
   const [isGenerationEnabled, setIsGenerationEnabled] = useState(false);
+  const [gender, setGender] = useState<'male' | 'female' | ''>('');
 
   // Pre-fill measurements if they exist
   useEffect(() => {
@@ -181,6 +182,7 @@ export function BodyMeasurements({
     } else {
       setMeasurements(defaultMeasurements);
     }
+    setGender('');
     setHasChanges(false);
     setErrors({});
     setTouched({});
@@ -192,18 +194,35 @@ export function BodyMeasurements({
     setIsGenerating(true);
     setGenerationError(null);
     setAvatarImageUrl(null);
+    if (!gender) {
+      setGenerationError('Please select a gender before generating an avatar.');
+      setIsGenerating(false);
+      return;
+    }
 
-    const prompt = `A 3D model of a person with the following measurements: 
-      Height: ${measurements.height} cm, 
-      Weight: ${measurements.weight} kg, 
-      Chest: ${measurements.chest} cm, 
-      Waist: ${measurements.waist} cm, 
-      Hips: ${measurements.hips} cm, 
-      Shoulders: ${measurements.shoulders} cm, 
-      Neck: ${measurements.neckCircumference} cm, 
-      Sleeve: ${measurements.sleeveLength} cm, 
-      Inseam: ${measurements.inseam} cm, 
-      Thigh: ${measurements.thigh} cm.`;
+    const genderText = gender === 'male' ? 'male (biologically male)' : 'female (biologically female)';
+    const safetyClause = 'Fully clothed in modest, neutral athletic or casual apparel: ' +
+      (gender === 'male'
+        ? 'fitted athletic top (no shirtless chest, no underwear) with shorts or training pants.'
+        : 'supportive athletic top with high-waisted leggings (no cleavage emphasis, no underwear-only).') +
+      ' No nudity. No transparent / see-through fabric. No sexual, suggestive or explicit styling. Natural realistic look.';
+
+    // Build measurement list including only those the user provided (skip blanks)
+    const measurementEntries: string[] = [];
+    if (measurements.height) measurementEntries.push(`Height: ${measurements.height} cm`);
+    if (measurements.weight) measurementEntries.push(`Weight: ${measurements.weight} kg`);
+    if (measurements.chest) measurementEntries.push(`Chest/Bust: ${measurements.chest} cm`);
+    if (measurements.waist) measurementEntries.push(`Waist: ${measurements.waist} cm`);
+    if (measurements.hips) measurementEntries.push(`Hips: ${measurements.hips} cm`);
+    if (measurements.shoulders) measurementEntries.push(`Shoulders: ${measurements.shoulders} cm`);
+    if (measurements.neckCircumference) measurementEntries.push(`Neck Circumference: ${measurements.neckCircumference} cm`);
+    if (measurements.sleeveLength) measurementEntries.push(`Sleeve Length: ${measurements.sleeveLength} cm`);
+    if (measurements.inseam) measurementEntries.push(`Inseam: ${measurements.inseam} cm`);
+    if (measurements.thigh) measurementEntries.push(`Thigh: ${measurements.thigh} cm`);
+
+    const measurementsLine = measurementEntries.join(', ');
+
+    const prompt = `Generate a realistic 3D ${genderText} human avatar using these body measurements exactly (do NOT invent or randomize proportions):\n${measurementsLine}.\nThe body shape MUST strictly reflect ONLY these provided measurements (no generic template). Preserve authentic proportional differences; do not exaggerate or smooth them.\nFull-body, front-facing, neutral relaxed pose. Realistic natural human anatomy derived from the measurements, neutral simple background, professional soft studio lighting, physically plausible materials, high quality 3D render. ${safetyClause}`;
 
     try {
       const response = await fetch('/api/avatar/generate', {
@@ -212,7 +231,7 @@ export function BodyMeasurements({
           'Content-Type': 'application/json'
         },
         credentials: 'include',
-        body: JSON.stringify({ prompt })
+        body: JSON.stringify({ prompt, gender })
       });
 
       if (!response.ok) {
@@ -220,14 +239,46 @@ export function BodyMeasurements({
       }
 
       const result = await response.json();
-      
-      // The backend now returns the parsed object directly
-      if (result.modelOutputs && result.modelOutputs.length > 0 && result.modelOutputs[0].image_base64) {
-        const imageUrl = `data:image/png;base64,${result.modelOutputs[0].image_base64}`;
-        setAvatarImageUrl(imageUrl);
-      } else {
-        throw new Error('Could not retrieve image from the generation service.');
+      console.log('Full API Response:', result); // Debug log
+
+      // New canonical backend response: { success, image, url, raw }
+      if (result.success) {
+        if (result.image) {
+          setAvatarImageUrl(result.image);
+          return;
+        }
+        if (result.url) {
+          setAvatarImageUrl(result.url);
+          return;
+        }
       }
+
+      // Legacy / fallback parsing for any older format
+      let imageUrl: string | null = null;
+      if (result.data && result.data.url) {
+        imageUrl = result.data.url;
+      } else if (result.data && result.data.image_base64) {
+        imageUrl = `data:image/png;base64,${result.data.image_base64}`;
+      } else if (result.url) {
+        imageUrl = result.url;
+      } else if (result.image_url) {
+        imageUrl = result.image_url;
+      } else if (result.images && result.images.length > 0) {
+        imageUrl = result.images[0].url || result.images[0];
+      } else if (result.data && result.data.images && result.data.images.length > 0) {
+        imageUrl = result.data.images[0].url || result.data.images[0];
+      } else if (typeof result === 'string' && result.startsWith('http')) {
+        imageUrl = result;
+      }
+
+      if (imageUrl) {
+        setAvatarImageUrl(imageUrl);
+        return;
+      }
+
+      const errorMsg = result.error || 'Could not retrieve image from the generation service.';
+      console.error('Unexpected API response structure:', result);
+      throw new Error(errorMsg);
 
     } catch (error) {
       const message = error instanceof Error ? error.message : 'An unknown error occurred.';
@@ -314,6 +365,28 @@ export function BodyMeasurements({
 
               {/* Measurement Input Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Gender Selection */}
+                <div className="space-y-2">
+                  <Label htmlFor="gender" className="text-white">Gender <span className="text-red-400">*</span></Label>
+                  <div className="flex space-x-4">
+                    <button
+                      type="button"
+                      onClick={() => setGender('male')}
+                      className={`flex-1 px-4 py-2 rounded-md border text-sm font-medium transition-colors ${gender === 'male' ? 'bg-white text-black border-white' : 'bg-gray-800 text-white border-gray-600 hover:bg-gray-700'}`}
+                    >Male</button>
+                    <button
+                      type="button"
+                      onClick={() => setGender('female')}
+                      className={`flex-1 px-4 py-2 rounded-md border text-sm font-medium transition-colors ${gender === 'female' ? 'bg-white text-black border-white' : 'bg-gray-800 text-white border-gray-600 hover:bg-gray-700'}`}
+                    >Female</button>
+                  </div>
+                  {!gender && showValidation && (
+                    <p className="text-red-400 text-sm flex items-center space-x-1">
+                      <AlertCircle className="w-3 h-3" />
+                      <span>Gender selection is required for avatar generation.</span>
+                    </p>
+                  )}
+                </div>
                 {measurementFields.map((field) => (
                   <div key={field.key} className="space-y-2">
                     <Label htmlFor={field.key} className="text-white">

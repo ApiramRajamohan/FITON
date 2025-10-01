@@ -27,22 +27,21 @@ namespace FITON.Server.Controllers
 
             var result = await _avatarService.GenerateAvatarAsync(avatarRequest.Prompt);
 
-            if (result != null)
+            if (!result.Success)
             {
-                // Parse the JSON result and return it as an object
-                try
-                {
-                    var parsedResult = System.Text.Json.JsonSerializer.Deserialize<object>(result);
-                    return Ok(parsedResult);
-                }
-                catch
-                {
-                    // If parsing fails, return the raw result
-                    return Ok(new { data = result });
-                }
+                return StatusCode(502, new { success = false, error = result.Error });
             }
 
-            return StatusCode(500, "Failed to generate avatar.");
+            // Build a canonical response shape for the frontend
+            var response = new
+            {
+                success = true,
+                image = result.ImageBase64 != null && result.ImageMime != null ? $"data:{result.ImageMime};base64,{result.ImageBase64}" : null,
+                url = result.Url,
+                raw = result.RawJson
+            };
+
+            return Ok(response);
         }
     }
 }
