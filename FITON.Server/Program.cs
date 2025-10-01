@@ -82,15 +82,33 @@ using (var scope = app.Services.CreateScope())
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-        // Apply any pending migrations
-        dbContext.Database.EnsureCreated();
-        Console.WriteLine("Database migrations applied successfully");
+        // Check if database can connect
+        if (dbContext.Database.CanConnect())
+        {
+            Console.WriteLine("Database connected successfully");
+
+            // Force create all tables
+            dbContext.Database.EnsureCreated();
+            Console.WriteLine("Database tables created successfully");
+
+            // Verify Users table exists
+            var tableExists = dbContext.Database.SqlQueryRaw<int>(
+                "SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Users'"
+            ).FirstOrDefault();
+
+            Console.WriteLine($"Users table exists: {tableExists > 0}");
+        }
+        else
+        {
+            Console.WriteLine("Cannot connect to database");
+        }
     }
     catch (Exception ex)
     {
-        Console.WriteLine($"Database migration failed: {ex.Message}");
-        // Don't throw - let the app start even if migration fails
+        Console.WriteLine($"Database initialization failed: {ex.Message}");
+        Console.WriteLine($"Full error: {ex}");
     }
 }
+
 
 app.Run();
