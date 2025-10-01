@@ -26,6 +26,7 @@ namespace FITON.Server.Utils.Database
 
         public DbSet<User> Users => Set<User>();
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+        public DbSet<Measurement> Measurements => Set<Measurement>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,9 +37,10 @@ namespace FITON.Server.Utils.Database
                 .IsUnique();
 
             modelBuilder.Entity<User>()
-                .HasMany(u => u.RefreshTokens)
-                .WithOne(rt => rt.User)
-                .HasForeignKey(rt => rt.UserId);
+                .HasOne(u => u.Measurement)
+                .WithOne(m => m.User)
+                .HasForeignKey<Measurement>(m => m.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

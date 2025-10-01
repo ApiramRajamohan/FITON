@@ -8,7 +8,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 interface SignInProps {
   onSwitchToSignUp: () => void;
-  onSignInSuccess: (username: string, password: string) => void;
+  onSignInSuccess: (email:string, username: string) => void; // ✅ fixed: only username
   onForgotPassword: () => void;
 }
 
@@ -17,21 +17,18 @@ export function SignIn({ onSwitchToSignUp, onSignInSuccess, onForgotPassword }: 
     email: '',
     password: ''
   });
-    const { login } = useAuth();
+  const { login } = useAuth();
 
-    const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle signin logic here
     console.log('Sign in:', formData);
-      
-      try {
-          await login(formData.email, formData.password);
-          onSignInSuccess(formData.email, formData.password);
-          alert('Logged in successfully!');
-      } catch (err: any) {
-          alert(err.message);
-      }
-    
+    try {
+      var username : any = await login(formData.email, formData.password);
+      onSignInSuccess(username,formData.email); // ✅ fixed: only pass email
+      alert('Logged in successfully!');
+    } catch (err: any) {
+      alert(err.message);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -64,69 +61,67 @@ export function SignIn({ onSwitchToSignUp, onSignInSuccess, onForgotPassword }: 
               Sign in to your FitOn wardrobe
             </CardDescription>
           </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="username" className="text-foreground">Email</Label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-                className="bg-input-background"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <Label htmlFor="password" className="text-foreground">Password</Label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                value={formData.password}
-                onChange={handleInputChange}
-                required
-                className="bg-input-background"
-              />
-            </div>
-            
-            <div className="flex justify-end mb-4">
-              <button 
-                type="button"
-                onClick={onForgotPassword}
-                className="text-muted-foreground hover:text-foreground"
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                {/* ✅ fixed: htmlFor now matches input id */}
+                <Label htmlFor="email" className="text-foreground">Email</Label>
+                <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-input-background"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="password" className="text-foreground">Password</Label>
+                <Input
+                  id="password"
+                  name="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  required
+                  className="bg-input-background"
+                />
+              </div>
+
+              <div className="flex justify-end mb-4">
+                <button
+                  type="button"
+                  onClick={onForgotPassword}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Forgot password?
+                </button>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
               >
-                Forgot password?
-              </button>
+                Sign In
+              </Button>
+            </form>
+
+            <div className="mt-6 text-center">
+              <p className="text-muted-foreground">
+                Don't have an account?{' '}
+                <button
+                  onClick={onSwitchToSignUp}
+                  className="text-foreground hover:underline"
+                >
+                  Sign up
+                </button>
+              </p>
             </div>
-            
-            <Button 
-              type="submit" 
-              className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              Sign In
-            </Button>
-          </form>
-          
-          <div className="mt-6 text-center">
-            <p className="text-muted-foreground">
-              Don't have an account?{' '}
-              <button 
-                onClick={onSwitchToSignUp}
-                className="text-foreground hover:underline"
-              >
-                Sign up
-              </button>
-            </p>
-          </div>
-
-
-
-        </CardContent>
+          </CardContent>
         </Card>
       </div>
     </div>

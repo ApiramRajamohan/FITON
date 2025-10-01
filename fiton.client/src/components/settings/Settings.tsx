@@ -109,7 +109,7 @@ export function Settings({ username, userProfile, isDarkMode, onToggleDarkMode, 
                 <Switch
                   id="notifications"
                   checked={settings.notifications}
-                  onCheckedChange={(checked) => handleSwitchChange('notifications', checked)}
+                  onCheckedChange={(checked: boolean) => handleSwitchChange('notifications', checked)}
                 />
               </div>
               
@@ -120,7 +120,7 @@ export function Settings({ username, userProfile, isDarkMode, onToggleDarkMode, 
                 <Switch
                   id="emailUpdates"
                   checked={settings.emailUpdates}
-                  onCheckedChange={(checked) => handleSwitchChange('emailUpdates', checked)}
+                  onCheckedChange={(checked: boolean) => handleSwitchChange('emailUpdates', checked)}
                 />
               </div>
             </CardContent>
@@ -188,7 +188,7 @@ export function Settings({ username, userProfile, isDarkMode, onToggleDarkMode, 
                 <Switch
                   id="publicProfile"
                   checked={settings.publicProfile}
-                  onCheckedChange={(checked) => handleSwitchChange('publicProfile', checked)}
+                  onCheckedChange={(checked: boolean) => handleSwitchChange('publicProfile', checked)}
                 />
               </div>
               
@@ -199,7 +199,7 @@ export function Settings({ username, userProfile, isDarkMode, onToggleDarkMode, 
                 <Switch
                   id="analytics"
                   checked={settings.analytics}
-                  onCheckedChange={(checked) => handleSwitchChange('analytics', checked)}
+                  onCheckedChange={(checked: boolean) => handleSwitchChange('analytics', checked)}
                 />
               </div>
             </CardContent>

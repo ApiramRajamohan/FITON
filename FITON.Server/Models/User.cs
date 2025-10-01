@@ -1,17 +1,17 @@
 ﻿namespace FITON.Server.Models
 {
     public class User
-
     {
         public int Id { get; set; }
         public string Username { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string PasswordHash { get; set; } = null!;
         public List<RefreshToken> RefreshTokens { get; set; } = new();
-        public Boolean IsAdmin { get; set; } = false;
-        
-    }
+        public bool IsAdmin { get; set; } = false;
 
+        // One-to-one measurement (optional)
+        public Measurement? Measurement { get; set; }
+    }
 
     public class RefreshToken
     {
@@ -23,3 +23,4 @@
         public User User { get; set; } = null!;
     }
 }
+
