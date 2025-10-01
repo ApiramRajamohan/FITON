@@ -76,4 +76,21 @@ app.MapControllers();
 
 app.MapFallbackToFile("/index.html");
 
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        
+        // Apply any pending migrations
+        dbContext.Database.Migrate();
+        Console.WriteLine("Database migrations applied successfully");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Database migration failed: {ex.Message}");
+        // Don't throw - let the app start even if migration fails
+    }
+}
+
 app.Run();
