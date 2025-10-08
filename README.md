@@ -102,18 +102,6 @@ This will start the React/Next.js frontend on the configured port (default: `htt
 ├─ scripts/            # Setup / deployment scripts
 └─ README.md
 ```
-
----
-
-## Team & Roles
-
-| Name          | Role (Sprint 1)       | Role (Sprint 2)       | Role (Sprint 3)       |
-|---------------|---------------------|---------------------|---------------------|
-| Dithara Avindi | BA + DevOps          | QA                  | Developer           |
-| Dilahara       | QA                   | Developer           | QA                  |
-| Yushri         | Developer            | BA + DevOps         | Developer           |
-| Apiram         | Developer            | Developer           | BA + DevOps         |
-
 ---
 
 ## Contributing
