@@ -36,10 +36,16 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -f FITON.Server/Dockerfile -t ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker build --no-cache -f FITON.Server/Dockerfile -t ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
 
       - name: Push Docker image to ACR
         run: |
           docker push ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
+      - name: Deploy to Container App
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          containerAppName: ${{ env.CONTAINER_APP_NAME }}
+          resourceGroup: ${{ env.RESOURCE_GROUP }}
+          imageToDeploy: ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
 
