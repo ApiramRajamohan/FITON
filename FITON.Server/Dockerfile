@@ -23,6 +23,12 @@ COPY ["FITON.Server/FITON.Server.csproj", "FITON.Server/"]
 COPY ["fiton.client/fiton.client.esproj", "fiton.client/"]
 RUN dotnet restore "./FITON.Server/FITON.Server.csproj"
 COPY . .
+# Build and publish the client project (if it's a Blazor WASM or similar)
+WORKDIR "/src/fiton.client"
+RUN npm install
+RUN npm run build
+
+
 WORKDIR "/src/FITON.Server"
 RUN dotnet build "./FITON.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
