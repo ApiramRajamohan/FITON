@@ -1,6 +1,37 @@
-@FITON.Server_HostAddress = http://localhost:5230
+@FITON_Server_HostAddress = http://localhost:5230
 
-GET {{FITON.Server_HostAddress}}/weatherforecast/
+GET {{FITON_Server_HostAddress}}
 Accept: application/json
+
+### Test Authentication Endpoints
+
+POST {{FITON_Server_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+###
+
+POST {{FITON_Server_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+###
+
+POST {{FITON_Server_HostAddress}}/api/auth/refresh
+Content-Type: application/json
+
+###
+
+POST {{FITON_Server_HostAddress}}/api/auth/logout
+Content-Type: application/json
 
 ###
