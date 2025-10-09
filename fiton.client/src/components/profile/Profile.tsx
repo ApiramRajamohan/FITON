@@ -247,7 +247,7 @@ export function Profile({ username, userProfile, onUpdateProfile, onBackToDashbo
                         )}
                         {profileData.measurements.waist && (
                           <div className="text-center">
-                            <p className="text-gray-400">Waist</p>
+                            <p className="text-gray-400">Waist2</p>
                             <p className="text-white">{profileData.measurements.waist} cm</p>
                           </div>
                         )}
