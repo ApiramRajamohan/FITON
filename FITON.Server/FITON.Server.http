@@ -1,6 +1,6 @@
-@FITON.Server_HostAddress = http://localhost:5230
+@FITON_Server_HostAddress = http://localhost:5230
 
-GET {{FITON.Server_HostAddress}}/weatherforecast/
+GET {{FITON_Server_HostAddress}}
 Accept: application/json
 
 ###
