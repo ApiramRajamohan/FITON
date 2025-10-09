@@ -138,7 +138,7 @@ export const RegisterForm = () => {
                 onChange={handleChange}
                 error={formErrors.username}
                 required
-                icon={userIcon}
+                // icon={userIcon}
                 placeholder="Choose a username"
                 className="transition-all duration-200"
               />
@@ -151,7 +151,7 @@ export const RegisterForm = () => {
                 onChange={handleChange}
                 error={formErrors.email}
                 required
-                icon={emailIcon}
+                // icon={emailIcon}
                 placeholder="Enter your email"
                 className="transition-all duration-200"
               />
@@ -164,7 +164,7 @@ export const RegisterForm = () => {
                 onChange={handleChange}
                 error={formErrors.password}
                 required
-                icon={passwordIcon}
+                // icon={passwordIcon}
                 placeholder="Create a password"
                 className="transition-all duration-200"
               />
@@ -177,7 +177,7 @@ export const RegisterForm = () => {
                 onChange={handleChange}
                 error={formErrors.confirmPassword}
                 required
-                icon={passwordIcon}
+                // icon={passwordIcon}
                 placeholder="Confirm your password"
                 className="transition-all duration-200"
               />

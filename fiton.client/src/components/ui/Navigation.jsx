@@ -37,9 +37,12 @@ export const Navigation = () => {
               <div className="p-2 bg-gradient-fashion rounded-xl">
                 <SparklesIcon size="md" className="text-white" />
               </div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                FITON
-              </h1>
+              <div>
+                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  FITON
+                </h1>
+                <p className="text-xs text-gray-500 hidden sm:block">Your personal style companion</p>
+              </div>
             </Link>
           </div>
 

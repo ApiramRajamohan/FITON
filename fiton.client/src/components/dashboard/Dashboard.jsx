@@ -16,13 +16,12 @@ import {
   ArrowRightIcon,
   EditIcon,
   PlusIcon,
-  HeartIcon,
-  LogoutIcon
+  HeartIcon
 } from '../ui/Icons';
 
 export const Dashboard = () => {
   const navigate = useNavigate();
-  const { logout, isAuthenticated, refreshAuthState } = useAuth();
+  const { isAuthenticated, refreshAuthState } = useAuth();
   const { user, isLoading, error, refetch } = useUserProfile();
 
   // Only fetch profile if authenticated
@@ -41,15 +40,6 @@ export const Dashboard = () => {
       refetch();
     }
   }, [isAuthenticated, refetch, refreshAuthState]);
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/login');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
 
   const handleNavigateToMeasurements = () => {
     navigate('/measurements');
@@ -82,10 +72,6 @@ export const Dashboard = () => {
             <Button onClick={handleRetryProfile} variant="primary">
               Retry
             </Button>
-            <Button variant="outline" onClick={handleLogout}>
-              <LogoutIcon size="sm" className="mr-2" />
-              Logout
-            </Button>
           </div>
         </div>
       </div>
@@ -93,38 +79,7 @@ export const Dashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
-      {/* Hero Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200/50 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-4">
-              <div className="p-2 bg-gradient-fashion rounded-xl">
-                <SparklesIcon size="lg" className="text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  FITON Dashboard
-                </h1>
-                <p className="text-gray-600 mt-1">Your personal style companion</p>
-              </div>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-right hidden sm:block">
-                <p className="text-sm text-gray-500">Welcome back</p>
-                <p className="font-semibold text-gray-900">{user?.username}!</p>
-              </div>
-              <Button variant="ghost" onClick={handleLogout} className="text-gray-600 hover:text-red-600">
-                <LogoutIcon size="sm" className="mr-2" />
-                Logout
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+    <div className="space-y-8">
         {/* Welcome Section */}
         <div className="mb-8">
           <Card variant="gradient" className="overflow-hidden">
@@ -373,7 +328,6 @@ export const Dashboard = () => {
             </Card>
           </div>
         </div>
-      </main>
     </div>
   );
 };
