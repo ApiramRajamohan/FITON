@@ -23,6 +23,7 @@ namespace FITON.Server.Controllers
             // Try multiple possible claim locations
             var userIdStr = User.FindFirstValue(JwtRegisteredClaimNames.Sub) ??
                            User.FindFirstValue(ClaimTypes.NameIdentifier) ??
+                           User.FindFirstValue("sub") ??
                            User.FindFirstValue("userid") ??
                            User.FindFirstValue("id");
 

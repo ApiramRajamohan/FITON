@@ -22,7 +22,12 @@ namespace FITON.Server.Controllers
         [HttpGet("user-profile")]
         public async Task<IActionResult> GetUserProfile()
         {
-            var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub);
+            // Try multiple possible claim locations for user ID
+            var userIdString = User.FindFirstValue(JwtRegisteredClaimNames.Sub) ??
+                              User.FindFirstValue(ClaimTypes.NameIdentifier) ??
+                              User.FindFirstValue("sub") ??
+                              User.FindFirstValue("userid");
+
             if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
             {
                 var claims = User?.Claims?.Select(c => new { c.Type, c.Value })?.ToList();
