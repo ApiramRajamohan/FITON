@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Button } from './Button';
-import { DashboardIcon, MeasurementIcon, ClothesIcon, WardrobeIcon, SparklesIcon, LogoutIcon } from './Icons';
+import { DashboardIcon, MeasurementIcon, ClothesIcon, WardrobeIcon, VirtualTryOnIcon, SparklesIcon, LogoutIcon } from './Icons';
 
 export const Navigation = () => {
   const { logout, user } = useAuth();
@@ -91,6 +91,17 @@ export const Navigation = () => {
             >
               <WardrobeIcon size="sm" className="mr-2" />
               Wardrobe
+            </Link>
+            <Link
+              to="/virtual-try-on"
+              className={`flex items-center px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
+                isActive('/virtual-try-on')
+                  ? 'bg-gradient-primary text-white shadow-lg'
+                  : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+              }`}
+            >
+              <VirtualTryOnIcon size="sm" className="mr-2" />
+              Virtual Try-On
             </Link>
           </div>
 
@@ -209,6 +220,18 @@ export const Navigation = () => {
               >
                 <WardrobeIcon size="sm" className="mr-3" />
                 Wardrobe
+              </Link>
+              <Link
+                to="/virtual-try-on"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`flex items-center px-3 py-2 rounded-xl text-base font-medium transition-all duration-200 ${
+                  isActive('/virtual-try-on')
+                    ? 'bg-gradient-primary text-white shadow-lg'
+                    : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
+                }`}
+              >
+                <VirtualTryOnIcon size="sm" className="mr-3" />
+                Virtual Try-On
               </Link>
               <div className="pt-3 border-t border-gray-200/50 mt-3">
                 <div className="px-3 py-2">

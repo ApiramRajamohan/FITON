@@ -61,6 +61,10 @@ export const Dashboard = () => {
     navigate('/wardrobe');
   };
 
+  const handleNavigateToVirtualTryOn = () => {
+    navigate('/virtual-try-on');
+  };
+
   const handleAddSampleData = async () => {
     try {
       setSampleDataLoading(true);
@@ -267,15 +271,15 @@ export const Dashboard = () => {
                 </Button>
 
                 <Button 
+                  onClick={handleNavigateToVirtualTryOn}
                   variant="outline"
-                  disabled
-                  className="flex items-center justify-between p-4 h-auto opacity-60"
+                  className="flex items-center justify-between p-4 h-auto"
                 >
                   <div className="flex items-center">
                     <TryOnIcon size="md" className="mr-3 text-purple-600" />
                     <div className="text-left">
                       <p className="font-semibold">Virtual Try-On</p>
-                      <p className="text-sm text-gray-600">Coming Soon</p>
+                      <p className="text-sm text-gray-600">Create 3D avatar</p>
                     </div>
                   </div>
                   <ArrowRightIcon size="sm" />
