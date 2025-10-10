@@ -152,7 +152,7 @@ export function Settings({ username, userProfile, isDarkMode, onToggleDarkMode, 
               <div className="space-y-2">
                 <Label className="text-card-foreground flex items-center space-x-2">
                   <Globe className="w-4 h-4" />
-                  <span>Language</span>
+                  <span>Langu</span>
                 </Label>
                 <Select value={settings.language} onValueChange={handleLanguageChange}>
                   <SelectTrigger className="bg-input border-border text-card-foreground">
