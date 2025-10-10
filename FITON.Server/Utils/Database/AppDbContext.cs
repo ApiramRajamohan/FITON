@@ -27,6 +27,7 @@ namespace FITON.Server.Utils.Database
         public DbSet<User> Users => Set<User>();
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
         public DbSet<Measurement> Measurements => Set<Measurement>();
+        public DbSet<Outfit> Outfits => Set<Outfit>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -41,6 +42,23 @@ namespace FITON.Server.Utils.Database
                 .WithOne(m => m.User)
                 .HasForeignKey<Measurement>(m => m.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            // Outfit relationships
+            modelBuilder.Entity<Outfit>()
+                .HasOne(o => o.User)
+                .WithMany(u => u.Outfits)
+                .HasForeignKey(o => o.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Indexes for better performance
+            modelBuilder.Entity<Outfit>()
+                .HasIndex(o => o.UserId);
+
+            modelBuilder.Entity<Outfit>()
+                .HasIndex(o => o.Category);
+
+            modelBuilder.Entity<Outfit>()
+                .HasIndex(o => o.Type);
         }
     }
 }

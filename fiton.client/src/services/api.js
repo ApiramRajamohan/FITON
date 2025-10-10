@@ -47,3 +47,26 @@ export const measurementsService = {
     return response.data;
   },
 };
+
+// Wardrobe Service
+export const wardrobeService = {
+  async getOutfits() {
+    const response = await api.get('/wardrobe');
+    return response.data;
+  },
+
+  async saveOutfit(outfit) {
+    const response = await api.post('/wardrobe', outfit);
+    return response.data;
+  },
+
+  async updateOutfit(outfitId, outfit) {
+    const response = await api.put(`/wardrobe/${outfitId}`, outfit);
+    return response.data;
+  },
+
+  async deleteOutfit(outfitId) {
+    const response = await api.delete(`/wardrobe/${outfitId}`);
+    return response.data;
+  },
+};

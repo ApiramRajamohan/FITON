@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useUserProfile } from '../../hooks/useUserProfile';
+import { useWardrobe } from '../../hooks/useWardrobe';
 import { Button } from '../ui/Button';
 import { Card, CardContent, CardHeader } from '../ui/Card';
 import { Alert } from '../ui/Alert';
@@ -23,6 +24,7 @@ export const Dashboard = () => {
   const navigate = useNavigate();
   const { isAuthenticated, refreshAuthState } = useAuth();
   const { user, isLoading, error, refetch } = useUserProfile();
+  const { outfits } = useWardrobe();
 
   // Only fetch profile if authenticated
   useEffect(() => {
@@ -43,6 +45,10 @@ export const Dashboard = () => {
 
   const handleNavigateToMeasurements = () => {
     navigate('/measurements');
+  };
+
+  const handleNavigateToWardrobe = () => {
+    navigate('/wardrobe');
   };
 
   const handleRetryProfile = () => {
@@ -122,7 +128,7 @@ export const Dashboard = () => {
               <div className="p-3 bg-emerald-100 rounded-full w-fit mx-auto mb-4">
                 <WardrobeIcon size="lg" className="text-emerald-600" />
               </div>
-              <h3 className="text-2xl font-bold text-emerald-600">0</h3>
+              <h3 className="text-2xl font-bold text-emerald-600">{outfits?.length || 0}</h3>
               <p className="text-gray-600 font-medium">Wardrobe Items</p>
             </CardContent>
           </Card>
@@ -280,15 +286,15 @@ export const Dashboard = () => {
                   </Button>
 
                   <Button 
+                    onClick={handleNavigateToWardrobe}
                     variant="outline"
-                    disabled
-                    className="flex items-center justify-between p-4 h-auto opacity-60"
+                    className="flex items-center justify-between p-4 h-auto"
                   >
                     <div className="flex items-center">
                       <WardrobeIcon size="md" className="mr-3 text-emerald-600" />
                       <div className="text-left">
-                        <p className="font-semibold">Wardrobe</p>
-                        <p className="text-sm text-gray-600">Coming Soon</p>
+                        <p className="font-semibold">Wardrobe {outfits?.length > 0 && `(${outfits.length})`}</p>
+                        <p className="text-sm text-gray-600">Browse your outfits</p>
                       </div>
                     </div>
                     <ArrowRightIcon size="sm" />
