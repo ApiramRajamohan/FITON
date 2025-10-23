@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 const api = axios.create({
-  baseURL: 'http://localhost:5230/api',
+  baseURL: apiUrl,
   withCredentials: true,
 });
 
@@ -61,8 +63,8 @@ api.interceptors.response.use(
     isRefreshing = true;
 
     try {
-      const refreshAxios = axios.create({
-        baseURL: 'http://localhost:5230/api',
+        const refreshAxios = axios.create({
+            baseURL: apiUrl,
         withCredentials: true,
       });
 

@@ -2,7 +2,7 @@ import api from '../utils/api';
 
 // Auth Service
 export const authService = {
-  async login(credentials) {
+    async login(credentials) {
     const response = await api.post('/auth/login', credentials);
     return response.data;
   },

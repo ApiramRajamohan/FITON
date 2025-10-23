@@ -51,7 +51,7 @@ export const LoginForm = () => {
       return;
     }
 
-    try {
+      try {
       await login(formData.email, formData.password);
       navigate('/dashboard');
     } catch (err) {

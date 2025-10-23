@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { authService } from '../services/api';
 
+const apiUrl = import.meta.env.VITE_API_URL;
+
 export const useAuth = () => {
   const [authState, setAuthState] = useState({
     token: localStorage.getItem('jwt'),
@@ -27,7 +29,7 @@ export const useAuth = () => {
 
       try {
         // Try to use the token to fetch user profile - this will validate it
-        const response = await fetch('http://localhost:5230/api/dashboard/user-profile', {
+          const response = await fetch(`${apiUrl}/dashboard/user-profile`, {
           headers: {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json',
@@ -101,15 +103,16 @@ export const useAuth = () => {
     }
   };
 
-  const login = useCallback(async (credentials) => {
+    const login = useCallback(async (email,password) => {
     setLoading(true);
-    try {
+      try {
+          let credentials = { email, password };
       const response = await authService.login(credentials);
       setAuthData(response.token);
       
       // Fetch user profile after successful login
       try {
-        const userResponse = await fetch('http://localhost:5230/api/dashboard/user-profile', {
+          const userResponse = await fetch(`${apiUrl}/dashboard/user-profile`, {
           headers: {
             'Authorization': `Bearer ${response.token}`,
             'Content-Type': 'application/json',
@@ -170,7 +173,7 @@ export const useAuth = () => {
     if (!token) return;
     
     try {
-      const response = await fetch('http://localhost:5230/api/dashboard/user-profile', {
+        const response = await fetch(`${apiUrl}/dashboard/user-profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json',
