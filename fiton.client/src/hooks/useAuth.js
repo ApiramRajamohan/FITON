@@ -137,8 +137,8 @@ export const useAuth = () => {
     setLoading(true);
     try {
       await authService.register(userData);
-      // Auto-login after registration
-      await login({ email: userData.email, password: userData.password });
+        // Auto-login after registration
+        await login(userData.email, userData.password);
     } catch (error) {
       const errorMessage = error.response?.data?.error || 'Registration failed';
       setError(errorMessage);
