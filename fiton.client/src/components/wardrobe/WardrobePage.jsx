@@ -162,15 +162,17 @@ const WardrobePage = () => {
             const client = await Client.connect("HumanAIGC/OutfitAnyone");
 
             // Prepare prompt from wardrobe data
-            const topItem = getClothingItem(topClothes, wardrobe.topClothesId).image;
-            const bottomItem = getClothingItem(bottomClothes, wardrobe.bottomClothesId).image;
-            const response_0 = await fetch("https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png");
+            const topItem = await fetch(getClothingItem(topClothes, wardrobe.topClothesId).image);
+            const bottomItem = await fetch(getClothingItem(bottomClothes, wardrobe.bottomClothesId).image);
+            const topImage = await topItem.blob();
+            const bottomImage = await bottomItem.blob();
+            const response_0 = await fetch("https://humanaigc-outfitanyone.hf.space/file=/tmp/gradio/28dbd2deba1e160bfadffbc3675ba4dcac20ca58/Eva_0.png");
             console.log(topItem);
             const exampleImage = await response_0.blob();
             const result = await client.predict("/get_tryon_result", {
                 model_name: exampleImage,
-                garment1: topItem,
-                garment2: bottomItem,
+                garment1: topImage,
+                garment2: bottomImage,
             });
             // Gradio returns base64 string
             setGeneratedImages(prev => ({ ...prev, [id]: result.data }));
@@ -180,6 +182,7 @@ const WardrobePage = () => {
         } finally {
             setGenerating(prev => ({ ...prev, [id]: false }));
         }
+
     };
 
 

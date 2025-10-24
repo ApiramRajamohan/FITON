@@ -22,8 +22,8 @@ namespace FITON.Tests
         public void TestValidLogin()
         {
             driver.Navigate().GoToUrl("https://localhost:4403/login");
-            driver.FindElement(By.Name("email")).SendKeys("test@example.com");
-            driver.FindElement(By.Name("password")).SendKeys("123456");
+            driver.FindElement(By.Name("email")).SendKeys("rapiram83@gmail.com");
+            driver.FindElement(By.Name("password")).SendKeys("12345678");
             driver.FindElement(By.CssSelector("button[type='submit']")).Click();
 
             Thread.Sleep(2000);

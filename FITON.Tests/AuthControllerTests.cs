@@ -28,7 +28,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Register_ShouldFail_ForDuplicateEmail()
     {
-        var user = new { Email = "dup@example.com", Password = "Abc123!", Name = "User" };
+        var user = new { Email = "newuser@example.com", Password = "Abc123!", Name = "User" };
         await _client.PostAsJsonAsync("/api/Auth/register", user);
         var response = await _client.PostAsJsonAsync("/api/Auth/register", user);
 
