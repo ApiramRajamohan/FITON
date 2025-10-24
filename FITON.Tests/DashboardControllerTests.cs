@@ -5,15 +5,17 @@ using FITON.Server;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Threading.Tasks;
 
-public class DashboardControllerTests : IClassFixture<WebApplicationFactory<Program>>
+public class DashboardControllerTests : FITON.Tests.AuthenticatedTestBase
 {
-    private readonly HttpClient _client;
-    public DashboardControllerTests(WebApplicationFactory<Program> factory) => _client = factory.CreateClient();
+    public DashboardControllerTests(WebApplicationFactory<Program> factory) : base(factory)
+    {
+    }
 
     [Fact]
     public async Task Dashboard_ShouldReturnOk()
     {
-        var res = await _client.GetAsync("/api/Dashboard");
+        await GetAuthenticatedClientAsync("dashuser1", "dash1@example.com");
+        var res = await _client.GetAsync("/api/Dashboard/user-profile");
         res.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 }

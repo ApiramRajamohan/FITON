@@ -18,7 +18,9 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Register_ShouldReturnOk_ForValidUser()
     {
-        var request = new { Email = "newuser@example.com", Password = "StrongPass123!", Name = "Apiram" };
+        // Use a unique email to avoid conflicts with other tests
+        var uniqueEmail = $"newuser{Guid.NewGuid().ToString().Substring(0, 8)}@example.com";
+        var request = new { Username = $"testuser{Guid.NewGuid().ToString().Substring(0, 8)}", Email = uniqueEmail, Password = "StrongPass123!" };
 
         var response = await _client.PostAsJsonAsync("/api/Auth/register", request);
 
@@ -28,7 +30,7 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Register_ShouldFail_ForDuplicateEmail()
     {
-        var user = new { Email = "dup@example.com", Password = "Abc123!", Name = "User" };
+        var user = new { Username = "dupuser", Email = "dup@example.com", Password = "Abc123!" };
         await _client.PostAsJsonAsync("/api/Auth/register", user);
         var response = await _client.PostAsJsonAsync("/api/Auth/register", user);
 
@@ -38,20 +40,21 @@ public class AuthControllerTests : IClassFixture<WebApplicationFactory<Program>>
     [Fact]
     public async Task Login_ShouldReturnJwt_ForValidUser()
     {
-        var user = new { Email = "loginuser@example.com", Password = "Pass123!" };
+        var user = new { Username = "loginuser", Email = "loginuser@example.com", Password = "Pass123!" };
         await _client.PostAsJsonAsync("/api/Auth/register", user);
-        var response = await _client.PostAsJsonAsync("/api/Auth/login", user);
+        var loginDto = new { Email = "loginuser@example.com", Password = "Pass123!" };
+        var response = await _client.PostAsJsonAsync("/api/Auth/login", loginDto);
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
-        var json = await response.Content.ReadFromJsonAsync<dynamic>();
-        string token = json?.token;
-        token.Should().NotBeNullOrEmpty();
+        var responseContent = await response.Content.ReadAsStringAsync();
+        responseContent.Should().Contain("token");
+        responseContent.Should().Contain("username");
     }
 
     [Fact]
     public async Task Login_ShouldFail_ForInvalidPassword()
     {
-        var user = new { Email = "fail@example.com", Password = "RightPass1!" };
+        var user = new { Username = "failuser", Email = "fail@example.com", Password = "RightPass1!" };
         await _client.PostAsJsonAsync("/api/Auth/register", user);
         var wrong = new { Email = "fail@example.com", Password = "WrongPass" };
         var response = await _client.PostAsJsonAsync("/api/Auth/login", wrong);

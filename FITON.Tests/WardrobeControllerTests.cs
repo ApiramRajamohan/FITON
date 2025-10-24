@@ -6,23 +6,27 @@ using FITON.Server;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Threading.Tasks;
 
-public class WardrobeControllerTests : IClassFixture<WebApplicationFactory<Program>>
+public class WardrobeControllerTests : FITON.Tests.AuthenticatedTestBase
 {
-    private readonly HttpClient _client;
-    public WardrobeControllerTests(WebApplicationFactory<Program> factory) => _client = factory.CreateClient();
+    public WardrobeControllerTests(WebApplicationFactory<Program> factory) : base(factory)
+    {
+    }
 
     [Fact]
     public async Task GetWardrobes_ShouldReturnOk()
     {
+        await GetAuthenticatedClientAsync("wardrobeuser1", "wardrobe1@example.com");
         var res = await _client.GetAsync("/api/Wardrobe");
         res.StatusCode.Should().Be(HttpStatusCode.OK);
     }
 
     [Fact]
-    public async Task AddItem_ShouldReturnOk()
+    public async Task AddItem_ShouldReturnBadRequest_ForInvalidData()
     {
+        await GetAuthenticatedClientAsync("wardrobeuser2", "wardrobe2@example.com");
+        // Wardrobe requires at least one clothing ID, so sending Name/Size should fail
         var item = new { Name = "Shirt", Size = "L" };
         var res = await _client.PostAsJsonAsync("/api/Wardrobe", item);
-        res.StatusCode.Should().BeOneOf(HttpStatusCode.OK, HttpStatusCode.Created);
+        res.StatusCode.Should().Be(HttpStatusCode.BadRequest);
     }
 }

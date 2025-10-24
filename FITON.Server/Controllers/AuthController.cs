@@ -44,7 +44,7 @@ public class AuthController : ControllerBase
         _db.Users.Add(user);
         await _db.SaveChangesAsync();
 
-        return Ok();
+        return Ok(new { message = "Registration successful", username = user.Username });
     }
     [AllowAnonymous]
     [HttpPost("login")]
@@ -149,7 +149,9 @@ public class AuthController : ControllerBase
         new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()) // Keep this as backup
     };
 
-        var secret = _config.GetValue<string>("Secret");
+        var secret = _config.GetValue<string>("Secret") ?? _config["Jwt:Key"];
+        if (string.IsNullOrEmpty(secret))
+            throw new InvalidOperationException("JWT secret key is not configured");
         var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 

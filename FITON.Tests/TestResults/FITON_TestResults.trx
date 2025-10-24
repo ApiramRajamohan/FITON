@@ -1,0 +1,587 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7d4ecab0-7a02-4e36-b9d2-52c6336bd9e7" name="@DITHARAs-MacBook-Air 2025-10-24 13:51:44" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-10-24T13:51:44.8807580+05:30" queuing="2025-10-24T13:51:44.8807580+05:30" start="2025-10-24T13:51:43.1082600+05:30" finish="2025-10-24T13:51:52.6912160+05:30" />
+  <TestSettings name="default" id="a9ac47b1-00a0-4475-9c09-f51f342049b3">
+    <Deployment runDeploymentRoot="_DITHARAs-MacBook-Air_2025-10-24_13_51_44" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="d8435193-9099-4bd7-917a-1bf9688b63fa" testId="b3b7a729-48a4-5d92-926c-d387417cb609" testName="ClothesControllerTests.AddClothing_ShouldFail_ForMissingName" computerName="DITHARAs-MacBook-Air" duration="00:00:00.9218792" startTime="2025-10-24T13:51:46.1248140+05:30" endTime="2025-10-24T13:51:47.0469150+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8435193-9099-4bd7-917a-1bf9688b63fa" />
+    <UnitTestResult executionId="ba356a8a-76d5-449e-9fc8-7245abe81afa" testId="fe99ddbd-c9b8-b943-61e7-ce6ef38da165" testName="AuthControllerTests.Register_ShouldFail_ForDuplicateEmail" computerName="DITHARAs-MacBook-Air" duration="00:00:00.1749610" startTime="2025-10-24T13:51:47.3319000+05:30" endTime="2025-10-24T13:51:47.5069710+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ba356a8a-76d5-449e-9fc8-7245abe81afa" />
+    <UnitTestResult executionId="441bdbca-f7ed-4d8f-bc7a-e2108694c087" testId="98922f3f-0062-77ee-3a6a-4dec43f54949" testName="FITON.Tests.AuthControllerJwtTests.Register_Should_CreateUser_And_SetRefreshTokenCookie" computerName="DITHARAs-MacBook-Air" duration="00:00:00.3084423" startTime="2025-10-24T13:51:45.3266970+05:30" endTime="2025-10-24T13:51:45.6352110+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="441bdbca-f7ed-4d8f-bc7a-e2108694c087" />
+    <UnitTestResult executionId="5f875088-2ab4-471a-8c7e-99c389b72e4c" testId="cde1c804-08ab-adc2-b9c8-6630acbb703f" testName="AuthControllerTests.Login_ShouldReturnJwt_ForValidUser" computerName="DITHARAs-MacBook-Air" duration="00:00:00.8291937" startTime="2025-10-24T13:51:46.5022540+05:30" endTime="2025-10-24T13:51:47.3317170+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5f875088-2ab4-471a-8c7e-99c389b72e4c" />
+    <UnitTestResult executionId="399edf51-01b2-4a58-98f7-3c0c48bbd873" testId="853932b6-eb5a-8d40-4b1e-11f87e7f1cfa" testName="WardrobeControllerTests.GetWardrobes_ShouldReturnOk" computerName="DITHARAs-MacBook-Air" duration="00:00:01.0521983" startTime="2025-10-24T13:51:45.4874480+05:30" endTime="2025-10-24T13:51:46.5398810+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="399edf51-01b2-4a58-98f7-3c0c48bbd873" />
+    <UnitTestResult executionId="e1eb8280-41c7-4d40-a440-0883d901518e" testId="293c5a91-2d6d-d306-2d46-5899ee6335b6" testName="WardrobeControllerTests.AddItem_ShouldReturnBadRequest_ForInvalidData" computerName="DITHARAs-MacBook-Air" duration="00:00:01.9586639" startTime="2025-10-24T13:51:43.5260150+05:30" endTime="2025-10-24T13:51:45.4864440+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1eb8280-41c7-4d40-a440-0883d901518e" />
+    <UnitTestResult executionId="876507f5-8487-42d8-9d42-f8e02cd9472f" testId="eda5675b-0303-afaf-62ec-764768356ed8" testName="FITON.Tests.AuthSystemTest.TestValidLogin" computerName="DITHARAs-MacBook-Air" duration="00:00:04.7325071" startTime="2025-10-24T13:51:43.4433880+05:30" endTime="2025-10-24T13:51:48.1915150+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="876507f5-8487-42d8-9d42-f8e02cd9472f">
+      <Output>
+        <ErrorInfo>
+          <Message>OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"css selector","selector":"*[name ="email"]"}
+  (Session info: chrome=141.0.7390.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</Message>
+          <StackTrace>   at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)
+   at OpenQA.Selenium.WebDriver.ExecuteAsync(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.WebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.By.&lt;.ctor&gt;b__6_0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.WebDriver.FindElement(By by)
+   at FITON.Tests.AuthSystemTest.TestValidLogin() in /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/AuthSystemTest.cs:line 25
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3bc00db5-d89d-4247-b176-38524c1b85cf" testId="23233162-b27c-e7bd-8d07-1e1a2d4d751d" testName="FITON.Tests.AuthSystemTest.TestInvalidLogin" computerName="DITHARAs-MacBook-Air" duration="00:00:04.4175433" startTime="2025-10-24T13:51:48.2646750+05:30" endTime="2025-10-24T13:51:52.6215650+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3bc00db5-d89d-4247-b176-38524c1b85cf">
+      <Output>
+        <ErrorInfo>
+          <Message>OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"css selector","selector":"*[name ="email"]"}
+  (Session info: chrome=141.0.7390.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception</Message>
+          <StackTrace>   at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)
+   at OpenQA.Selenium.WebDriver.ExecuteAsync(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+   at OpenQA.Selenium.WebDriver.FindElement(String mechanism, String value)
+   at OpenQA.Selenium.By.&lt;.ctor&gt;b__6_0(ISearchContext context)
+   at OpenQA.Selenium.By.FindElement(ISearchContext context)
+   at OpenQA.Selenium.WebDriver.FindElement(By by)
+   at FITON.Tests.AuthSystemTest.TestInvalidLogin() in /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/AuthSystemTest.cs:line 37
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="22c8ee26-4ef8-48e6-8821-6b45da339e14" testId="0502d447-23b8-9ef1-8024-38f8a45b9476" testName="ClothesControllerTests.AddClothing_ShouldReturnCreated" computerName="DITHARAs-MacBook-Air" duration="00:00:00.6231223" startTime="2025-10-24T13:51:47.0471760+05:30" endTime="2025-10-24T13:51:47.6705070+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="22c8ee26-4ef8-48e6-8821-6b45da339e14" />
+    <UnitTestResult executionId="357f9e76-c3f7-4724-a7a9-94883a184e15" testId="f21246c5-0078-9bd5-0d49-37248586c267" testName="DashboardControllerTests.Dashboard_ShouldReturnOk" computerName="DITHARAs-MacBook-Air" duration="00:00:02.4075009" startTime="2025-10-24T13:51:43.4440330+05:30" endTime="2025-10-24T13:51:45.8521670+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="357f9e76-c3f7-4724-a7a9-94883a184e15" />
+    <UnitTestResult executionId="ef497995-75ea-4269-8af7-03f3af18dd88" testId="01a4b037-0d3c-d25d-3ea6-afd19ef4f207" testName="AuthControllerTests.Register_ShouldReturnOk_ForValidUser" computerName="DITHARAs-MacBook-Air" duration="00:00:02.5084767" startTime="2025-10-24T13:51:43.4440580+05:30" endTime="2025-10-24T13:51:45.9530220+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef497995-75ea-4269-8af7-03f3af18dd88" />
+    <UnitTestResult executionId="3697f9a3-ac27-4ff5-b7d3-beb93176d9f7" testId="0bc9c349-c0b1-3f7c-1109-aae7e4f1d907" testName="MeasurementsControllerTests.AddMeasurement_ShouldReturnOk_ForNegativeValues" computerName="DITHARAs-MacBook-Air" duration="00:00:00.9743147" startTime="2025-10-24T13:51:45.9545960+05:30" endTime="2025-10-24T13:51:46.9318640+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3697f9a3-ac27-4ff5-b7d3-beb93176d9f7" />
+    <UnitTestResult executionId="05704f2e-61b9-47a9-abe9-e4f6bfeafe2d" testId="68b9bb09-0d68-3ff4-67d4-f074dcf92013" testName="FITON.Tests.AuthControllerJwtTests.Login_ValidCredentials_Should_SetRefreshTokenCookie" computerName="DITHARAs-MacBook-Air" duration="00:00:00.4719899" startTime="2025-10-24T13:51:44.3766760+05:30" endTime="2025-10-24T13:51:44.8482670+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="05704f2e-61b9-47a9-abe9-e4f6bfeafe2d" />
+    <UnitTestResult executionId="0a2505bb-1f24-4131-a81a-0c8fb7048b89" testId="2497ccd3-14d6-265f-7cf9-8e4611bcba7d" testName="AuthControllerTests.Login_ShouldFail_ForInvalidPassword" computerName="DITHARAs-MacBook-Air" duration="00:00:00.5487363" startTime="2025-10-24T13:51:45.9532290+05:30" endTime="2025-10-24T13:51:46.5020510+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0a2505bb-1f24-4131-a81a-0c8fb7048b89" />
+    <UnitTestResult executionId="709d8692-8654-4672-b1f9-59c5ccb3cd1f" testId="201ff25a-2def-8afe-5596-5355d06e8cbb" testName="FITON.Tests.AuthControllerJwtTests.Login_ValidCredentials_Should_ReturnOk_And_SetJwtCookie" computerName="DITHARAs-MacBook-Air" duration="00:00:00.9271118" startTime="2025-10-24T13:51:43.4532470+05:30" endTime="2025-10-24T13:51:44.3762550+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="709d8692-8654-4672-b1f9-59c5ccb3cd1f" />
+    <UnitTestResult executionId="ec352a86-38f8-488e-ba78-f754d7966567" testId="26334d8a-88ff-657f-73ee-947d6c325dcf" testName="MeasurementsControllerTests.AddMeasurement_ShouldReturnOk" computerName="DITHARAs-MacBook-Air" duration="00:00:02.5092870" startTime="2025-10-24T13:51:43.4440120+05:30" endTime="2025-10-24T13:51:45.9538480+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec352a86-38f8-488e-ba78-f754d7966567" />
+    <UnitTestResult executionId="024b02a5-0c79-4f7b-99a3-ba45f74ba7f8" testId="34dd21c0-5a1b-fa62-4496-e22898efaa46" testName="ClothesControllerTests.GetClothes_ShouldReturnOk" computerName="DITHARAs-MacBook-Air" duration="00:00:02.6800139" startTime="2025-10-24T13:51:43.4440440+05:30" endTime="2025-10-24T13:51:46.1246850+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="024b02a5-0c79-4f7b-99a3-ba45f74ba7f8" />
+    <UnitTestResult executionId="d86f6ed5-8a1b-4d73-91c9-d6a1b5e1f3fd" testId="73ebc796-4a88-3161-b715-2714ea998766" testName="FITON.Tests.AuthControllerJwtTests.Login_InvalidPassword_Should_ReturnUnauthorized" computerName="DITHARAs-MacBook-Air" duration="00:00:00.4779387" startTime="2025-10-24T13:51:44.8525580+05:30" endTime="2025-10-24T13:51:45.3263580+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d86f6ed5-8a1b-4d73-91c9-d6a1b5e1f3fd" />
+    <UnitTestResult executionId="32c9a722-b2e4-4727-ab65-67b743b15f66" testId="e7706d44-bb09-9c29-7b09-b3fdef07d686" testName="FITON.Tests.UnitTest1.Test1" computerName="DITHARAs-MacBook-Air" duration="00:00:00.0017888" startTime="2025-10-24T13:51:43.4440680+05:30" endTime="2025-10-24T13:51:43.4481790+05:30" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32c9a722-b2e4-4727-ab65-67b743b15f66" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="FITON.Tests.AuthSystemTest.TestValidLogin" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="eda5675b-0303-afaf-62ec-764768356ed8">
+      <Execution id="876507f5-8487-42d8-9d42-f8e02cd9472f" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.AuthSystemTest" name="TestValidLogin" />
+    </UnitTest>
+    <UnitTest name="FITON.Tests.AuthSystemTest.TestInvalidLogin" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="23233162-b27c-e7bd-8d07-1e1a2d4d751d">
+      <Execution id="3bc00db5-d89d-4247-b176-38524c1b85cf" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.AuthSystemTest" name="TestInvalidLogin" />
+    </UnitTest>
+    <UnitTest name="MeasurementsControllerTests.AddMeasurement_ShouldReturnOk" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="26334d8a-88ff-657f-73ee-947d6c325dcf">
+      <Execution id="ec352a86-38f8-488e-ba78-f754d7966567" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="MeasurementsControllerTests" name="AddMeasurement_ShouldReturnOk" />
+    </UnitTest>
+    <UnitTest name="ClothesControllerTests.GetClothes_ShouldReturnOk" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="34dd21c0-5a1b-fa62-4496-e22898efaa46">
+      <Execution id="024b02a5-0c79-4f7b-99a3-ba45f74ba7f8" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ClothesControllerTests" name="GetClothes_ShouldReturnOk" />
+    </UnitTest>
+    <UnitTest name="ClothesControllerTests.AddClothing_ShouldFail_ForMissingName" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="b3b7a729-48a4-5d92-926c-d387417cb609">
+      <Execution id="d8435193-9099-4bd7-917a-1bf9688b63fa" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ClothesControllerTests" name="AddClothing_ShouldFail_ForMissingName" />
+    </UnitTest>
+    <UnitTest name="AuthControllerTests.Login_ShouldReturnJwt_ForValidUser" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="cde1c804-08ab-adc2-b9c8-6630acbb703f">
+      <Execution id="5f875088-2ab4-471a-8c7e-99c389b72e4c" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AuthControllerTests" name="Login_ShouldReturnJwt_ForValidUser" />
+    </UnitTest>
+    <UnitTest name="AuthControllerTests.Register_ShouldFail_ForDuplicateEmail" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="fe99ddbd-c9b8-b943-61e7-ce6ef38da165">
+      <Execution id="ba356a8a-76d5-449e-9fc8-7245abe81afa" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AuthControllerTests" name="Register_ShouldFail_ForDuplicateEmail" />
+    </UnitTest>
+    <UnitTest name="MeasurementsControllerTests.AddMeasurement_ShouldReturnOk_ForNegativeValues" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="0bc9c349-c0b1-3f7c-1109-aae7e4f1d907">
+      <Execution id="3697f9a3-ac27-4ff5-b7d3-beb93176d9f7" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="MeasurementsControllerTests" name="AddMeasurement_ShouldReturnOk_ForNegativeValues" />
+    </UnitTest>
+    <UnitTest name="AuthControllerTests.Register_ShouldReturnOk_ForValidUser" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="01a4b037-0d3c-d25d-3ea6-afd19ef4f207">
+      <Execution id="ef497995-75ea-4269-8af7-03f3af18dd88" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AuthControllerTests" name="Register_ShouldReturnOk_ForValidUser" />
+    </UnitTest>
+    <UnitTest name="FITON.Tests.AuthControllerJwtTests.Login_ValidCredentials_Should_SetRefreshTokenCookie" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="68b9bb09-0d68-3ff4-67d4-f074dcf92013">
+      <Execution id="05704f2e-61b9-47a9-abe9-e4f6bfeafe2d" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.AuthControllerJwtTests" name="Login_ValidCredentials_Should_SetRefreshTokenCookie" />
+    </UnitTest>
+    <UnitTest name="FITON.Tests.AuthControllerJwtTests.Login_ValidCredentials_Should_ReturnOk_And_SetJwtCookie" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="201ff25a-2def-8afe-5596-5355d06e8cbb">
+      <Execution id="709d8692-8654-4672-b1f9-59c5ccb3cd1f" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.AuthControllerJwtTests" name="Login_ValidCredentials_Should_ReturnOk_And_SetJwtCookie" />
+    </UnitTest>
+    <UnitTest name="ClothesControllerTests.AddClothing_ShouldReturnCreated" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="0502d447-23b8-9ef1-8024-38f8a45b9476">
+      <Execution id="22c8ee26-4ef8-48e6-8821-6b45da339e14" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="ClothesControllerTests" name="AddClothing_ShouldReturnCreated" />
+    </UnitTest>
+    <UnitTest name="AuthControllerTests.Login_ShouldFail_ForInvalidPassword" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="2497ccd3-14d6-265f-7cf9-8e4611bcba7d">
+      <Execution id="0a2505bb-1f24-4131-a81a-0c8fb7048b89" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="AuthControllerTests" name="Login_ShouldFail_ForInvalidPassword" />
+    </UnitTest>
+    <UnitTest name="WardrobeControllerTests.AddItem_ShouldReturnBadRequest_ForInvalidData" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="293c5a91-2d6d-d306-2d46-5899ee6335b6">
+      <Execution id="e1eb8280-41c7-4d40-a440-0883d901518e" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WardrobeControllerTests" name="AddItem_ShouldReturnBadRequest_ForInvalidData" />
+    </UnitTest>
+    <UnitTest name="DashboardControllerTests.Dashboard_ShouldReturnOk" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="f21246c5-0078-9bd5-0d49-37248586c267">
+      <Execution id="357f9e76-c3f7-4724-a7a9-94883a184e15" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="DashboardControllerTests" name="Dashboard_ShouldReturnOk" />
+    </UnitTest>
+    <UnitTest name="WardrobeControllerTests.GetWardrobes_ShouldReturnOk" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="853932b6-eb5a-8d40-4b1e-11f87e7f1cfa">
+      <Execution id="399edf51-01b2-4a58-98f7-3c0c48bbd873" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="WardrobeControllerTests" name="GetWardrobes_ShouldReturnOk" />
+    </UnitTest>
+    <UnitTest name="FITON.Tests.AuthControllerJwtTests.Register_Should_CreateUser_And_SetRefreshTokenCookie" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="98922f3f-0062-77ee-3a6a-4dec43f54949">
+      <Execution id="441bdbca-f7ed-4d8f-bc7a-e2108694c087" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.AuthControllerJwtTests" name="Register_Should_CreateUser_And_SetRefreshTokenCookie" />
+    </UnitTest>
+    <UnitTest name="FITON.Tests.AuthControllerJwtTests.Login_InvalidPassword_Should_ReturnUnauthorized" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="73ebc796-4a88-3161-b715-2714ea998766">
+      <Execution id="d86f6ed5-8a1b-4d73-91c9-d6a1b5e1f3fd" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.AuthControllerJwtTests" name="Login_InvalidPassword_Should_ReturnUnauthorized" />
+    </UnitTest>
+    <UnitTest name="FITON.Tests.UnitTest1.Test1" storage="/users/ditharaavindi/desktop/year 3 sem 1/csp/assignment/sprint4-devop &amp; qa/fiton/fiton.tests/bin/debug/net9.0/fiton.tests.dll" id="e7706d44-bb09-9c29-7b09-b3fdef07d686">
+      <Execution id="32c9a722-b2e4-4727-ab65-67b743b15f66" />
+      <TestMethod codeBase="/Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/bin/Debug/net9.0/FITON.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="FITON.Tests.UnitTest1" name="Test1" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b3b7a729-48a4-5d92-926c-d387417cb609" executionId="d8435193-9099-4bd7-917a-1bf9688b63fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe99ddbd-c9b8-b943-61e7-ce6ef38da165" executionId="ba356a8a-76d5-449e-9fc8-7245abe81afa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98922f3f-0062-77ee-3a6a-4dec43f54949" executionId="441bdbca-f7ed-4d8f-bc7a-e2108694c087" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cde1c804-08ab-adc2-b9c8-6630acbb703f" executionId="5f875088-2ab4-471a-8c7e-99c389b72e4c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="853932b6-eb5a-8d40-4b1e-11f87e7f1cfa" executionId="399edf51-01b2-4a58-98f7-3c0c48bbd873" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="293c5a91-2d6d-d306-2d46-5899ee6335b6" executionId="e1eb8280-41c7-4d40-a440-0883d901518e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eda5675b-0303-afaf-62ec-764768356ed8" executionId="876507f5-8487-42d8-9d42-f8e02cd9472f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23233162-b27c-e7bd-8d07-1e1a2d4d751d" executionId="3bc00db5-d89d-4247-b176-38524c1b85cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0502d447-23b8-9ef1-8024-38f8a45b9476" executionId="22c8ee26-4ef8-48e6-8821-6b45da339e14" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f21246c5-0078-9bd5-0d49-37248586c267" executionId="357f9e76-c3f7-4724-a7a9-94883a184e15" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="01a4b037-0d3c-d25d-3ea6-afd19ef4f207" executionId="ef497995-75ea-4269-8af7-03f3af18dd88" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0bc9c349-c0b1-3f7c-1109-aae7e4f1d907" executionId="3697f9a3-ac27-4ff5-b7d3-beb93176d9f7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68b9bb09-0d68-3ff4-67d4-f074dcf92013" executionId="05704f2e-61b9-47a9-abe9-e4f6bfeafe2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2497ccd3-14d6-265f-7cf9-8e4611bcba7d" executionId="0a2505bb-1f24-4131-a81a-0c8fb7048b89" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="201ff25a-2def-8afe-5596-5355d06e8cbb" executionId="709d8692-8654-4672-b1f9-59c5ccb3cd1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26334d8a-88ff-657f-73ee-947d6c325dcf" executionId="ec352a86-38f8-488e-ba78-f754d7966567" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="34dd21c0-5a1b-fa62-4496-e22898efaa46" executionId="024b02a5-0c79-4f7b-99a3-ba45f74ba7f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="73ebc796-4a88-3161-b715-2714ea998766" executionId="d86f6ed5-8a1b-4d73-91c9-d6a1b5e1f3fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7706d44-bb09-9c29-7b09-b3fdef07d686" executionId="32c9a722-b2e4-4727-ab65-67b743b15f66" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="19" executed="19" passed="17" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 9.0.8)
+[xUnit.net 00:00:00.03]   Discovering: FITON.Tests
+[xUnit.net 00:00:00.05]   Discovered:  FITON.Tests
+[xUnit.net 00:00:00.06]   Starting:    FITON.Tests
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware[16]
+      The WebRootPath was not found: /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Server/wwwroot. Static files may be unavailable.
+warn: Microsoft.EntityFrameworkCore.Model.Validation[10625]
+      The foreign key property 'Avatar.UserId1' was created in shadow state because a conflicting property with the simple name 'UserId' exists in the entity type, but is either not mapped, is already used for another relationship, or is incompatible with the associated primary key type. See https://aka.ms/efcore-relationships for information on mapping relationships in EF Core.
+Login attempt for email: test@example.com
+Login attempt for email: test@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (67ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: wardrobe2@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (58ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+Login attempt for email: test@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (51ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (51ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: dash1@example.com
+Login attempt for email: measure1@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (55ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (65ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (53ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (87ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (74ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (75ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: clothes1@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (62ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: wardrobe1@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (89ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (62ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (103ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (59ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (87ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+Received DTO: {"Height":"180","Weight":"75","Chest":null,"Waist":"32","Hips":null,"Shoulders":null,"NeckCircumference":null,"SleeveLength":null,"Inseam":null,"Thigh":null,"SkinColor":null,"Description":null}
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (84ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [m].[Id], [m].[Chest], [m].[Description], [m].[Height], [m].[Hips], [m].[Inseam], [m].[NeckCircumference], [m].[Shoulders], [m].[SkinColor], [m].[SleeveLength], [m].[Thigh], [m].[UserId], [m].[Waist], [m].[Weight]
+      FROM [Measurements] AS [m]
+      WHERE [m].[UserId] = @__userId_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (77ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username], [m].[Id], [m].[Chest], [m].[Description], [m].[Height], [m].[Hips], [m].[Inseam], [m].[NeckCircumference], [m].[Shoulders], [m].[SkinColor], [m].[SleeveLength], [m].[Thigh], [m].[UserId], [m].[Waist], [m].[Weight]
+      FROM [Users] AS [u]
+      LEFT JOIN [Measurements] AS [m] ON [u].[Id] = [m].[UserId]
+      WHERE [u].[Id] = @__userId_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (88ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (DbType = Boolean), @p2='?' (Size = 4000), @p3='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [Users] ([Email], [IsAdmin], [PasswordHash], [Username])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (115ms) [Parameters=[@p13='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      UPDATE [Measurements] SET [Chest] = @p0, [Description] = @p1, [Height] = @p2, [Hips] = @p3, [Inseam] = @p4, [NeckCircumference] = @p5, [Shoulders] = @p6, [SkinColor] = @p7, [SleeveLength] = @p8, [Thigh] = @p9, [UserId] = @p10, [Waist] = @p11, [Weight] = @p12
+      OUTPUT 1
+      WHERE [Id] = @p13;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (49ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (44ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (60ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+Login attempt for email: measure2@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (63ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: fail@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (64ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (65ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (70ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (43ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [o].[Id], [o].[Name], [o].[Description], [o].[Category], [o].[Brand], [o].[Size], [o].[Color], [o].[Type], [o].[Image], [o].[CreatedAt], [o].[UpdatedAt]
+      FROM [Outfits] AS [o]
+      WHERE [o].[UserId] = @__userId_0
+      ORDER BY [o].[CreatedAt] DESC
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (67ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: clothes3@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (63ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (71ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (83ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (56ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (49ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [w].[Id], [w].[Accessories], [w].[BottomClothesId], [w].[CreatedAt], [w].[Description], [w].[FullOutfitClothesId], [w].[Name], [w].[Occasion], [w].[Season], [w].[TopClothesId], [w].[UpdatedAt], [w].[UserId]
+      FROM [Wardrobes] AS [w]
+      WHERE [w].[UserId] = @__userId_0
+      ORDER BY [w].[UpdatedAt] DESC
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (61ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: loginuser@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (67ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (97ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+Received DTO: {"Height":"-5","Weight":"0","Chest":null,"Waist":"-2","Hips":null,"Shoulders":null,"NeckCircumference":null,"SleeveLength":null,"Inseam":null,"Thigh":null,"SkinColor":null,"Description":null}
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (72ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (109ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [m].[Id], [m].[Chest], [m].[Description], [m].[Height], [m].[Hips], [m].[Inseam], [m].[NeckCircumference], [m].[Shoulders], [m].[SkinColor], [m].[SleeveLength], [m].[Thigh], [m].[UserId], [m].[Waist], [m].[Weight]
+      FROM [Measurements] AS [m]
+      WHERE [m].[UserId] = @__userId_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (81ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (115ms) [Parameters=[@p13='?' (DbType = Int32), @p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (Size = 4000), @p3='?' (Size = 4000), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (Size = 4000), @p10='?' (DbType = Int32), @p11='?' (Size = 4000), @p12='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      UPDATE [Measurements] SET [Chest] = @p0, [Description] = @p1, [Height] = @p2, [Hips] = @p3, [Inseam] = @p4, [NeckCircumference] = @p5, [Shoulders] = @p6, [SkinColor] = @p7, [SleeveLength] = @p8, [Thigh] = @p9, [UserId] = @p10, [Waist] = @p11, [Weight] = @p12
+      OUTPUT 1
+      WHERE [Id] = @p13;
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (106ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+Login attempt for email: clothes2@example.com
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (69ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (70ms) [Parameters=[@__dto_Email_0='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT TOP(1) [u].[Id], [u].[Email], [u].[IsAdmin], [u].[PasswordHash], [u].[Username]
+      FROM [Users] AS [u]
+      WHERE [u].[Email] = @__dto_Email_0
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (81ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+     Warning:
+     The component "Fluent Assertions" is governed by the rules defined in the Xceed License Agreement and
+     the Xceed Fluent Assertions Community License. You may use Fluent Assertions free of charge for
+     non-commercial use only. An active subscription is required to use Fluent Assertions for commercial use.
+     Please contact Xceed Sales mailto:sales@xceed.com to acquire a subscription at a very low cost.
+     A paid commercial license supports the development and continued increasing support of
+     Fluent Assertions users under both commercial and community licenses. Help us
+     keep Fluent Assertions at the forefront of unit testing.
+     For more information, visit https://xceed.com/products/unit-testing/fluent-assertions/
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (58ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (55ms) [Parameters=[@__user_Id_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [r].[Id], [r].[Expires], [r].[IsRevoked], [r].[Token], [r].[UserId]
+      FROM [RefreshTokens] AS [r]
+      WHERE [r].[UserId] = @__user_Id_0 AND [r].[Expires] &lt; GETUTCDATE()
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (113ms) [Parameters=[@__dto_Username_0='?' (Size = 4000), @__dto_Email_1='?' (Size = 4000)], CommandType='Text', CommandTimeout='30']
+      SELECT CASE
+          WHEN EXISTS (
+              SELECT 1
+              FROM [Users] AS [u]
+              WHERE [u].[Username] = @__dto_Username_0 OR [u].[Email] = @__dto_Email_1) THEN CAST(1 AS bit)
+          ELSE CAST(0 AS bit)
+      END
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (78ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Boolean), @p2='?' (Size = 450), @p3='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [RefreshTokens] ([Expires], [IsRevoked], [Token], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3);
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (82ms) [Parameters=[@p0='?' (Size = 50), @p1='?' (Size = 50), @p2='?' (Size = 50), @p3='?' (DbType = DateTime2), @p4='?' (Size = 500), @p5='?' (Size = 4000), @p6='?' (Size = 100), @p7='?' (Size = 20), @p8='?' (Size = 50), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SET IMPLICIT_TRANSACTIONS OFF;
+      SET NOCOUNT ON;
+      INSERT INTO [Outfits] ([Brand], [Category], [Color], [CreatedAt], [Description], [Image], [Name], [Size], [Type], [UpdatedAt], [UserId])
+      OUTPUT INSERTED.[Id]
+      VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8, @p9, @p10);
+[xUnit.net 00:00:04.89]       OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"css selector","selector":"*[name ="email"]"}
+[xUnit.net 00:00:04.89]         (Session info: chrome=141.0.7390.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+[xUnit.net 00:00:04.89]       Stack Trace:
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.WebDriver.ExecuteAsync(String driverCommandToExecute, Dictionary`2 parameters)
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.WebDriver.FindElement(String mechanism, String value)
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.By.&lt;.ctor&gt;b__6_0(ISearchContext context)
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.By.FindElement(ISearchContext context)
+[xUnit.net 00:00:04.89]            at OpenQA.Selenium.WebDriver.FindElement(By by)
+[xUnit.net 00:00:04.89]         /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/AuthSystemTest.cs(25,0): at FITON.Tests.AuthSystemTest.TestValidLogin()
+[xUnit.net 00:00:04.89]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:04.89]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:09.24]       OpenQA.Selenium.NoSuchElementException : no such element: Unable to locate element: {"method":"css selector","selector":"*[name ="email"]"}
+[xUnit.net 00:00:09.24]         (Session info: chrome=141.0.7390.122); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#nosuchelementexception
+[xUnit.net 00:00:09.24]       Stack Trace:
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.WebDriver.UnpackAndThrowOnError(Response errorResponse, String commandToExecute)
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.WebDriver.ExecuteAsync(String driverCommandToExecute, Dictionary`2 parameters)
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.WebDriver.Execute(String driverCommandToExecute, Dictionary`2 parameters)
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.WebDriver.FindElement(String mechanism, String value)
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.By.&lt;.ctor&gt;b__6_0(ISearchContext context)
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.By.FindElement(ISearchContext context)
+[xUnit.net 00:00:09.24]            at OpenQA.Selenium.WebDriver.FindElement(By by)
+[xUnit.net 00:00:09.24]         /Users/ditharaavindi/Desktop/year 3 sem 1/CSP/assignment/sprint4-devop &amp; QA/FITON/FITON.Tests/AuthSystemTest.cs(37,0): at FITON.Tests.AuthSystemTest.TestInvalidLogin()
+[xUnit.net 00:00:09.24]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+[xUnit.net 00:00:09.24]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:09.24]   Finished:    FITON.Tests
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DITHARAs-MacBook-Air" outcome="Error" timestamp="2025-10-24T13:51:48.2621960+05:30">
+        <Text>[xUnit.net 00:00:04.89]     FITON.Tests.AuthSystemTest.TestValidLogin [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DITHARAs-MacBook-Air" outcome="Error" timestamp="2025-10-24T13:51:52.6243130+05:30">
+        <Text>[xUnit.net 00:00:09.24]     FITON.Tests.AuthSystemTest.TestInvalidLogin [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

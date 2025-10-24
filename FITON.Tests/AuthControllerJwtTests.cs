@@ -26,14 +26,15 @@ namespace FITON.Tests
         private IConfiguration GetConfiguration()
         {
             var settings = new Dictionary<string, string?> {
-                {"Jwt:Key", "SuperSecretKey1234567890"},
-                {"Jwt:Issuer", "TestIssuer"},
-                {"Jwt:Audience", "TestAudience"}
-            };
+        {"Jwt:Key", "SuperSecretKeyThatIsLongEnough1234567890123456"}, // ✅ Must be at least 32 characters for HS256
+        {"Jwt:Issuer", "TestIssuer"},
+        {"Jwt:Audience", "TestAudience"}
+    };
             return new ConfigurationBuilder()
                 .AddInMemoryCollection(settings)
                 .Build();
         }
+
 
         private AuthController GetController(AppDbContext db)
         {
@@ -60,8 +61,11 @@ namespace FITON.Tests
             var result = await controller.Register(dto);
             Assert.IsType<OkObjectResult>(result);
 
-            var cookies = controller.Response.Headers["Set-Cookie"].ToString();
-            Assert.Contains("refreshToken=", cookies);  // ✅ match actual cookie
+            // Register doesn't set cookies - only Login does
+            // Just verify the user was created
+            var user = await db.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            Assert.NotNull(user);
+            Assert.Equal(dto.Username, user.Username);
         }
 
         [Fact]
