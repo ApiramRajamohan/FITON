@@ -14,8 +14,6 @@
 
         // One-to-many outfits
         public List<Outfit> Outfits { get; set; } = new();
-
-        public Avatar? Avatar { get; set; }
     }
 
     public class RefreshToken

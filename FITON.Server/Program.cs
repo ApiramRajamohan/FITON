@@ -20,6 +20,10 @@ builder.Services.AddAuthentication(options =>
 .AddJwtBearer(options =>
 {
     var secret = builder.Configuration.GetValue<string>("Secret");
+    if (string.IsNullOrEmpty(secret))
+    {
+        throw new InvalidOperationException("JWT Secret is not configured in appsettings.json");
+    }
     var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secret));
 
     options.RequireHttpsMetadata = !builder.Environment.IsDevelopment();
@@ -63,6 +67,7 @@ builder.Services.AddControllers()
     });
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddHttpClient(); 
 
 var app = builder.Build();
 

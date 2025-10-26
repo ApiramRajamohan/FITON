@@ -26,5 +26,10 @@ namespace FITON.Server.Models
 
         // Navigation properties for the User
         public User? User { get; set; }
+        
+        // Navigation properties for outfit items
+        public Outfit? TopClothes { get; set; }
+        public Outfit? BottomClothes { get; set; }
+        public Outfit? FullOutfitClothes { get; set; }
     }
 }

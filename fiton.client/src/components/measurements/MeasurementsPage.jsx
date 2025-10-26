@@ -168,15 +168,8 @@ export const MeasurementsPage = () => {
       // Refresh auth state to ensure user data is up to date
       await refreshAuthState();
       
-      // If user came from Virtual Try-On, navigate back there after a brief delay
-      if (location.state?.from === '/virtual-try-on') {
-        setTimeout(() => {
-          navigate('/virtual-try-on', { state: { from: '/measurements' } });
-        }, 1500);
-      } else {
-        // Clear success message after 3 seconds
-        setTimeout(() => setSuccessMessage(''), 3000);
-      }
+      // Clear success message after 3 seconds
+      setTimeout(() => setSuccessMessage(''), 3000);
       
     } catch (error) {
       console.error('Save measurements error:', error);
@@ -275,18 +268,9 @@ export const MeasurementsPage = () => {
         <div className="mb-8">
           <div className="flex justify-between items-center">
             <h1 className="text-3xl font-bold text-gray-900">Body Measurements</h1>
-            {location.state?.from === '/virtual-try-on' ? (
-              <Button 
-                variant="outline" 
-                onClick={() => navigate('/virtual-try-on', { state: { from: '/measurements' } })}
-              >
-                Back to Virtual Try-On
-              </Button>
-            ) : (
-              <Button variant="outline" onClick={handleNavigateToDashboard}>
-                Back to Dashboard
-              </Button>
-            )}
+            <Button variant="outline" onClick={handleNavigateToDashboard}>
+              Back to Dashboard
+            </Button>
           </div>
           <p className="text-gray-600 mt-2">Track your body measurements for better fitness monitoring.</p>
         </div>

@@ -7,7 +7,7 @@ import { Dashboard } from './components/dashboard/Dashboard';
 import { MeasurementsPage } from './components/measurements/MeasurementsPage';
 import { ClothesPage } from './components/clothes/ClothesPage';
 import WardrobePage from './components/wardrobe/WardrobePage';
-import VirtualTryOnPage from './components/virtualtry/VirtualTryOnPage';
+import { VirtualTryOnPage } from './components/virtualtryon/VirtualTryOnPage';
 import { Layout } from './components/layout/Layout';
 import { Spinner } from './components/ui/Spinner';
 

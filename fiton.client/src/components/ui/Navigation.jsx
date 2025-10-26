@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { Button } from './Button';
-import { DashboardIcon, MeasurementIcon, ClothesIcon, WardrobeIcon, VirtualTryOnIcon, SparklesIcon, LogoutIcon } from './Icons';
+import { DashboardIcon, MeasurementIcon, ClothesIcon, WardrobeIcon, TryOnIcon, SparklesIcon, LogoutIcon } from './Icons';
 
 export const Navigation = () => {
   const { logout, user } = useAuth();
@@ -100,7 +100,7 @@ export const Navigation = () => {
                   : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
               }`}
             >
-              <VirtualTryOnIcon size="sm" className="mr-2" />
+              <TryOnIcon size="sm" className="mr-2" />
               Virtual Try-On
             </Link>
           </div>
@@ -230,7 +230,7 @@ export const Navigation = () => {
                     : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                 }`}
               >
-                <VirtualTryOnIcon size="sm" className="mr-3" />
+                <TryOnIcon size="sm" className="mr-3" />
                 Virtual Try-On
               </Link>
               <div className="pt-3 border-t border-gray-200/50 mt-3">
