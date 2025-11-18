@@ -9,3 +9,5 @@ obj/
 FITON.Server/Migrations/
 FITON.sln
 node_modules
+appsettings.json
+appsettings.Development.json
