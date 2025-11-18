@@ -29,7 +29,6 @@ namespace FITON.Server.Utils.Database
         public DbSet<Measurement> Measurements => Set<Measurement>();
         public DbSet<Outfit> Outfits => Set<Outfit>();
         public DbSet<Wardrobe> Wardrobes => Set<Wardrobe>();
-        public DbSet<Avatar> Avatars => Set<Avatar>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -59,6 +58,25 @@ namespace FITON.Server.Utils.Database
                 .HasForeignKey(w => w.UserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            // Wardrobe to Outfit relationships
+            modelBuilder.Entity<Wardrobe>()
+                .HasOne(w => w.TopClothes)
+                .WithMany()
+                .HasForeignKey(w => w.TopClothesId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Wardrobe>()
+                .HasOne(w => w.BottomClothes)
+                .WithMany()
+                .HasForeignKey(w => w.BottomClothesId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Wardrobe>()
+                .HasOne(w => w.FullOutfitClothes)
+                .WithMany()
+                .HasForeignKey(w => w.FullOutfitClothesId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             // Indexes for better performance
             modelBuilder.Entity<Outfit>()
                 .HasIndex(o => o.UserId);
@@ -75,17 +93,6 @@ namespace FITON.Server.Utils.Database
 
             modelBuilder.Entity<Wardrobe>()
                 .HasIndex(w => w.Occasion);
-
-            // Avatar relationships
-            modelBuilder.Entity<Avatar>()
-                .HasOne(a => a.User)
-                .WithMany()
-                .HasForeignKey(a => a.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Avatar indexes
-            modelBuilder.Entity<Avatar>()
-                .HasIndex(a => a.UserId);
         }
     }
 }

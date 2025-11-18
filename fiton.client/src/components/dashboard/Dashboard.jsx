@@ -273,16 +273,16 @@ export const Dashboard = () => {
                 <Button 
                   onClick={handleNavigateToVirtualTryOn}
                   variant="outline"
-                  className="flex items-center justify-between p-4 h-auto"
+                  className="flex items-center justify-between p-4 h-auto bg-gradient-to-br from-purple-50 to-pink-50 border-purple-200 hover:from-purple-100 hover:to-pink-100"
                 >
                   <div className="flex items-center">
                     <TryOnIcon size="md" className="mr-3 text-purple-600" />
                     <div className="text-left">
-                      <p className="font-semibold">Virtual Try-On</p>
-                      <p className="text-sm text-gray-600">Create 3D avatar</p>
+                      <p className="font-semibold text-purple-700">Virtual Try-On ✨</p>
+                      <p className="text-sm text-purple-600">AI-powered preview</p>
                     </div>
                   </div>
-                  <ArrowRightIcon size="sm" />
+                  <ArrowRightIcon size="sm" className="text-purple-600" />
                 </Button>
 
                 <Button 
