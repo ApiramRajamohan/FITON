@@ -39,7 +39,7 @@ namespace FITON.Tests
             return controller;
         }
 
-        // parameterized cases — controller currently accepts most string values, so expect Ok
+        // parameterized cases ï¿½ controller currently accepts most string values, so expect Ok
         [Theory]
         [InlineData("175","70","80","95","olive","desc")]
         [InlineData("150","45","60","85","fair","")]
