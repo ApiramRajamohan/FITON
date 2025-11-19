@@ -1,4 +1,4 @@
-name: CI - Run Tests with Coverage
+﻿name: CI - Run Tests with Coverage
 
 on:
   pull_request:
@@ -19,49 +19,54 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      #  Checkout code
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Setup .NET
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
+      # Restore dependencies
       - name: Restore dependencies
         run: dotnet restore FITON.Server/FITON.Server.csproj
 
+      #  Build solution
       - name: Build solution
         run: dotnet build FITON.Server/FITON.Server.csproj --no-restore --configuration Release
 
+      # 5 Run tests with coverage and TRX results
       - name: Run tests with coverage
         run: |
           dotnet test FITON.Tests/FITON.Tests.csproj \
             --no-build \
             --verbosity normal \
-            --logger "trx;LogFileName=test-results.trx" \
-            --results-directory "FITON.Tests/TestResults" \
+            --logger:"trx;LogFileName=test-results.trx" \
+            --results-directory:"./TestResults" \
             --collect:"XPlat Code Coverage" \
             /p:CoverletOutputFormat=cobertura
 
-      # Upload coverage XML
+      # 6️ Upload coverage XML artifact
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
           name: code-coverage
-          path: FITON.Tests/TestResults/**/coverage.cobertura.xml
+          path: "./TestResults/**/coverage.cobertura.xml"
 
-      # Upload TRX test results
+      # 7️ Upload ANY TRX test result artifact
       - name: Upload TRX test results
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: FITON.Tests/TestResults/**/*.trx
+          path: "**/*.trx"
 
-      # Publish test annotations
+      # 8️ Publish test annotations in PR
       - name: Display test results annotations
         uses: dorny/test-reporter@v1
         if: always()
         with:
           name: FITON.Tests
-          path: FITON.Tests/TestResults/**/*.trx
+          path: "**/*.trx"
           reporter: dotnet-trx
