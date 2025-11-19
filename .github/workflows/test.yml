@@ -62,12 +62,3 @@ jobs:
         with:
           name: test-results
           path: "./TestResults/test-results.trx"
-
-      # 8️⃣ Publish test annotations in PR
-      - name: Display test results annotations
-        uses: dorny/test-reporter@v1
-        if: always()
-        with:
-          name: FITON.Tests
-          path: "./TestResults/test-results.trx"
-          reporter: dotnet-trx
