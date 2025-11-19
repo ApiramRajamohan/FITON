@@ -95,6 +95,7 @@ namespace FITON.Server.Controllers
                 existing.SleeveLength = dto.SleeveLength;
                 existing.Inseam = dto.Inseam;
                 existing.Thigh = dto.Thigh;
+                existing.Gender = dto.Gender;
                 existing.SkinColor = dto.SkinColor;
                 existing.Description = dto.Description;
 
@@ -116,6 +117,7 @@ namespace FITON.Server.Controllers
                 SleeveLength = dto.SleeveLength,
                 Inseam = dto.Inseam,
                 Thigh = dto.Thigh,
+                Gender = dto.Gender,
                 SkinColor = dto.SkinColor,
                 Description = dto.Description
             };

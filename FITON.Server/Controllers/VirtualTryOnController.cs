@@ -156,7 +156,15 @@ namespace FITON.Server.Controllers
         private string ConstructPrompt(Models.Measurement m, Wardrobe w)
         {
             var sb = new StringBuilder();
-            sb.Append("A professional full-body fashion photograph of an adult model standing upright. ");
+            sb.Append("A professional full-body fashion photograph of an adult ");
+            
+            // Gender specification
+            if (!string.IsNullOrEmpty(m.Gender))
+            {
+                sb.Append($"{m.Gender.ToLower()} ");
+            }
+            
+            sb.Append("model standing upright. ");
             sb.Append("Studio lighting, neutral gray background, fashion photography style. ");
 
             // Skin tone
@@ -186,6 +194,19 @@ namespace FITON.Server.Controllers
                 }
                 
                 sb.Append($"approximately {m.Height}cm tall. ");
+            }
+            
+            // Add gender-specific body shape descriptors if gender is specified
+            if (!string.IsNullOrEmpty(m.Gender))
+            {
+                if (m.Gender.Equals("Male", StringComparison.OrdinalIgnoreCase))
+                {
+                    sb.Append("Masculine physique. ");
+                }
+                else if (m.Gender.Equals("Female", StringComparison.OrdinalIgnoreCase))
+                {
+                    sb.Append("Feminine physique. ");
+                }
             }
             
             // Simplified measurements for key proportions
