@@ -25,6 +25,7 @@ export const MeasurementsPage = () => {
     sleeveLength: measurements?.sleeveLength || '',
     inseam: measurements?.inseam || '',
     thigh: measurements?.thigh || '',
+    gender: measurements?.gender || '',
     skinColor: measurements?.skinColor || '',
     description: measurements?.description || '',
   });
@@ -45,6 +46,7 @@ export const MeasurementsPage = () => {
         sleeveLength: measurements.sleeveLength || '',
         inseam: measurements.inseam || '',
         thigh: measurements.thigh || '',
+        gender: measurements.gender || '',
         skinColor: measurements.skinColor || '',
         description: measurements.description || '',
       });
@@ -200,6 +202,7 @@ export const MeasurementsPage = () => {
           sleeveLength: '',
           inseam: '',
           thigh: '',
+          gender: '',
           skinColor: '',
           description: '',
         });
@@ -425,6 +428,24 @@ export const MeasurementsPage = () => {
               <div>
                 <h4 className="text-md font-medium text-gray-900 mb-4">Additional Information</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Gender
+                    </label>
+                    <select
+                      name="gender"
+                      value={formData.gender}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+                    >
+                      <option value="">Select gender</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                    </select>
+                    {formErrors.gender && (
+                      <p className="mt-1 text-sm text-red-600">{formErrors.gender}</p>
+                    )}
+                  </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Skin Color

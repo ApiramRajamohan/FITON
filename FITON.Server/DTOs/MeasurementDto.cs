@@ -14,6 +14,7 @@ namespace FITON.Server.DTOs
         public string? SleeveLength { get; set; }
         public string? Inseam { get; set; }
         public string? Thigh { get; set; }
+        public string? Gender { get; set; }
         public string? SkinColor { get; set; }
         public string? Description { get; set; }
     }

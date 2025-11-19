@@ -172,6 +172,14 @@ export const VirtualTryOnPage = () => {
                     <CardContent>
                         {measurements ? (
                             <div className="space-y-3">
+                                {/* Gender - Prominent Display */}
+                                {measurements.gender && (
+                                    <div className="p-3 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg border-2 border-purple-200">
+                                        <label className="block text-xs font-medium text-purple-700 mb-1">Gender</label>
+                                        <p className="text-base font-bold text-purple-900">{measurements.gender}</p>
+                                    </div>
+                                )}
+
                                 {/* Basic Measurements */}
                                 <div className="grid grid-cols-2 gap-3">
                                     <div className="p-3 bg-gray-50 rounded-lg">
