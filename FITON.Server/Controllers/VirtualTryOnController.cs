@@ -140,6 +140,37 @@ namespace FITON.Server.Controllers
             {
                 sb.Append($"Proportions suited for {m.Waist}cm waist clothing. ");
             }
+            
+            // Additional measurement details for more accurate representation
+            if (!string.IsNullOrEmpty(m.Chest))
+            {
+                sb.Append($"Chest measurement: {m.Chest}cm. ");
+            }
+            
+            if (!string.IsNullOrEmpty(m.Shoulders))
+            {
+                sb.Append($"Shoulder width: {m.Shoulders}cm. ");
+            }
+            
+            if (!string.IsNullOrEmpty(m.NeckCircumference))
+            {
+                sb.Append($"Neck circumference: {m.NeckCircumference}cm. ");
+            }
+            
+            if (!string.IsNullOrEmpty(m.SleeveLength))
+            {
+                sb.Append($"Sleeve length: {m.SleeveLength}cm. ");
+            }
+            
+            if (!string.IsNullOrEmpty(m.Inseam))
+            {
+                sb.Append($"Inseam length: {m.Inseam}cm. ");
+            }
+            
+            if (!string.IsNullOrEmpty(m.Thigh))
+            {
+                sb.Append($"Thigh circumference: {m.Thigh}cm. ");
+            }
 
             // Additional description if provided
             if (!string.IsNullOrEmpty(m.Description))

@@ -55,7 +55,12 @@ export const MeasurementsPage = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Store the raw string value without conversion
+    // This prevents automatic float conversion from number inputs
+    const cleanValue = value.trim();
+    
+    setFormData(prev => ({ ...prev, [name]: cleanValue }));
     
     // Real-time validation
     const requiredFields = ['height', 'weight'];
@@ -63,10 +68,10 @@ export const MeasurementsPage = () => {
     
     if (numericFields.includes(name)) {
       // Check if required field is empty
-      if (requiredFields.includes(name) && (!value || value.trim() === '')) {
+      if (requiredFields.includes(name) && (!cleanValue || cleanValue === '')) {
         setFormErrors(prev => ({ ...prev, [name]: 'This field is required' }));
-      } else if (value !== '' && value !== null && value !== undefined) {
-        const numValue = Number(value);
+      } else if (cleanValue !== '' && cleanValue !== null && cleanValue !== undefined) {
+        const numValue = Number(cleanValue);
         if (isNaN(numValue) || numValue <= 0) {
           setFormErrors(prev => ({ ...prev, [name]: 'Must be a positive number' }));
         } else {
@@ -160,7 +165,14 @@ export const MeasurementsPage = () => {
           measurementData[key] = null;
         } else {
           // Send all values as strings since backend expects strings
-          measurementData[key] = formData[key].toString();
+          // Preserve original format - remove unnecessary decimal points
+          let value = formData[key].toString();
+          // If it's a numeric field and has .0 at the end, remove it
+          if (['height', 'weight', 'chest', 'waist', 'hips', 'shoulders', 'neckCircumference', 'sleeveLength', 'inseam', 'thigh'].includes(key)) {
+            // Remove trailing .0 but keep actual decimal values
+            value = value.replace(/\.0+$/, '');
+          }
+          measurementData[key] = value;
         }
       });
 
@@ -314,24 +326,26 @@ export const MeasurementsPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
                     label="Height (cm) *"
-                    type="number"
+                    type="text"
                     name="height"
                     value={formData.height}
                     onChange={handleChange}
                     error={formErrors.height}
                     placeholder="e.g. 175"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                     required
                   />
                   <Input
                     label="Weight (kg) *"
-                    type="number"
+                    type="text"
                     name="weight"
                     value={formData.weight}
                     onChange={handleChange}
                     error={formErrors.weight}
                     placeholder="e.g. 70"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                     required
                   />
                 </div>
@@ -343,83 +357,91 @@ export const MeasurementsPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   <Input
                     label="Chest"
-                    type="number"
+                    type="text"
                     name="chest"
                     value={formData.chest}
                     onChange={handleChange}
                     error={formErrors.chest}
                     placeholder="e.g. 100"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Waist"
-                    type="number"
+                    type="text"
                     name="waist"
                     value={formData.waist}
                     onChange={handleChange}
                     error={formErrors.waist}
                     placeholder="e.g. 85"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Hips"
-                    type="number"
+                    type="text"
                     name="hips"
                     value={formData.hips}
                     onChange={handleChange}
                     error={formErrors.hips}
                     placeholder="e.g. 95"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Shoulders"
-                    type="number"
+                    type="text"
                     name="shoulders"
                     value={formData.shoulders}
                     onChange={handleChange}
                     error={formErrors.shoulders}
                     placeholder="e.g. 45"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Neck Circumference"
-                    type="number"
+                    type="text"
                     name="neckCircumference"
                     value={formData.neckCircumference}
                     onChange={handleChange}
                     error={formErrors.neckCircumference}
                     placeholder="e.g. 38"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Sleeve Length"
-                    type="number"
+                    type="text"
                     name="sleeveLength"
                     value={formData.sleeveLength}
                     onChange={handleChange}
                     error={formErrors.sleeveLength}
                     placeholder="e.g. 65"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Inseam"
-                    type="number"
+                    type="text"
                     name="inseam"
                     value={formData.inseam}
                     onChange={handleChange}
                     error={formErrors.inseam}
                     placeholder="e.g. 80"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                   <Input
                     label="Thigh"
-                    type="number"
+                    type="text"
                     name="thigh"
                     value={formData.thigh}
                     onChange={handleChange}
                     error={formErrors.thigh}
                     placeholder="e.g. 55"
-                    step="0.1"
+                    pattern="[0-9]+\.?[0-9]*"
+                    inputMode="decimal"
                   />
                 </div>
               </div>
